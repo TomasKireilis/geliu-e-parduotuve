@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.cartPhoto {
+  height: 80px;
+  width: 80px;
+}
