@@ -6,7 +6,11 @@ function FlowerList() {
   return (
     <div className="flower-list">
       {flowersArray.map((item, index) => (
-        <Product imgSrc="flowersIcon.jpg" title="Palergonija"></Product>
+        <Product
+          key={index}
+          imgSrc="flowersIcon.jpg"
+          title="Palergonija"
+        ></Product>
       ))}
     </div>
   );

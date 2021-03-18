@@ -18,7 +18,7 @@ export function VerticallyCenteredModal(props) {
     <Modal
       show={props.show}
       onHide={props.onHide}
-      dialogClassName="modal-90w"
+      dialogClassName="modal-60w"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
