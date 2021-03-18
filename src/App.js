@@ -1,5 +1,6 @@
 import "./App.css";
-import ShoppingCartTable from "./ShoppingCartTable";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ShoppingCartTable from "./ShoppingCartPage/ShoppingCartTable";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {

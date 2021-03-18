@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MdClear } from 'react-icons/md';
+import Button from 'react-bootstrap/Button'
 
 const ShoppingCartRow = ({ item }) => {
     const [amount, setAmount] = useState(item.amount);
@@ -31,13 +32,13 @@ const ShoppingCartRow = ({ item }) => {
             </td>
             <td>{(item.price * amount).toFixed(2)}</td>
             <td>
-                <button
+                <Button
                     type="button"
-                    style={{ border: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}
+                    variant="delete"
                     onClick={() => deleteFromCart(item.id)}
                     >
-                 <MdClear />
-                </button>
+                 <MdClear size={20}/>
+                </Button>
             </td>
         </tr>
     );

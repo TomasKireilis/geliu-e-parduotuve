@@ -10,11 +10,11 @@ const ShoppingCartTable = () => {
           <thead>
             <tr>
               <th></th>
-              <th style={{ textAlign: 'center'}}>Prekės pavadinimas</th>
-              <th style={{ textAlign: 'center'}}>Vieneto kaina</th>
-              <th style={{ textAlign: 'center'}}>Kiekis</th>
-              <th style={{ textAlign: 'center'}}>Suma</th>
-              <th style={{ textAlign: 'center'}}>Pašalinti</th>
+              <th>Prekės pavadinimas</th>
+              <th>Vieneto kaina</th>
+              <th>Kiekis</th>
+              <th>Suma</th>
+              <th>Pašalinti</th>
             </tr>
           </thead>
           <tbody>
