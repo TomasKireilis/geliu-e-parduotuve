@@ -1,3 +1,4 @@
+import Product from "MainContent/Product";
 import React from "react";
 
 function FlowerList() {
@@ -5,7 +6,7 @@ function FlowerList() {
   return (
     <div className="flower-list">
       {flowersArray.map((item, index) => (
-        <img src="flowersIcon.jpg" />
+        <Product imgSrc="flowersIcon.jpg" title="Palergonija"></Product>
       ))}
     </div>
   );
