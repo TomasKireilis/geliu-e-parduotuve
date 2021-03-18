@@ -49,6 +49,7 @@
   width: 70%;
   margin: auto;
 }
+
 .product-container {
   border: 2px solid rgba(0, 0, 0, 1);
   border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
@@ -75,3 +76,26 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+.cartPhoto {
+  height: 4vh;
+  max-height: 100px;
+  min-height: 80px;
+}
+
+table thead tr th {
+  text-align: center;
+}
+
+table td, table thead tr {
+  font-size: 16px;
+  text-align: center;
+}
+
+.btn-delete {
+  border: 'none';
+  box-shadow: 'none';
+  background-color: 'transparent';
+}
+
