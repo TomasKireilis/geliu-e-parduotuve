@@ -1,4 +1,3 @@
-
 .relative-center {
   position: relative;
   margin: auto;
@@ -11,39 +10,79 @@
   left: 0;
 }
 .expand-by-width {
-
   width: 100vw;
   height: auto;
 }
 .bacround-image {
-  background-image: url('flowerBackground.jpg');
+  background-image: url("background.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;  
+  background-attachment: fixed;
   background-size: cover;
-
 }
-
 .backround-color {
   backdrop-filter: blur(8px);
-background-color: rgba(0, 0, 0, 0.1);
- 
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .absolute-center {
   position: absolute;
   margin: auto;
 }
-
-.main-content{
+.modal-60w {
+  width: 60vw !important;
+  max-width: 60vw !important;
+}
+.product-popup-image {
   position: relative;
   width: 100%;
 }
-.flower-list{
+.main-content {
+  position: relative;
+  width: 100%;
+}
+.flower-list {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 50%;
+  width: 70%;
   margin: auto;
+}
+.product-popup-button {
+  width: 100%;
+  min-width: 100px;
+  height: 8vh;
+  min-height: 50px;
+  margin-top: 5px;
+  position: absolute;
+  right: 0;
+  font-size: 2vw !important;
+}
+
+.product-container {
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
+    1 25%;
+  background-color: ghostwhite;
+  margin: 3px;
+}
+
+.product-container:hover {
+  border: 3px solid rgba(0, 0, 0, 0.8);
+}
+.product-title {
+  position: relative;
+  background-color: rgba(248, 248, 255, 0.8);
+  font-size: 2em;
+  margin-top: -1.5em;
+  width: fit-content;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.product-image {
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cartPhoto {
@@ -56,13 +95,14 @@ table thead tr th {
   text-align: center;
 }
 
-table td, table thead tr {
+table td,
+table thead tr {
   font-size: 16px;
   text-align: center;
 }
 
 .btn-delete {
-  border: 'none';
-  box-shadow: 'none';
-  background-color: 'transparent';
+  border: "none";
+  box-shadow: "none";
+  background-color: "transparent";
 }
