@@ -10,6 +10,7 @@ function FlowerList() {
           key={index}
           imgSrc="flowersIcon.jpg"
           title="Palergonija"
+          info="Snaputinių augalų gentis, kuriai priklauso krūmai, puskrumiai ir žolės. Auginama daug hibridinių formų."
         ></Product>
       ))}
     </div>
