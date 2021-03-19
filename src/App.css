@@ -18,10 +18,12 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  z-index: -100;
 }
 .backround-color {
   backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.1);
+  z-index: -99;
 }
 .absolute-center {
   position: absolute;
@@ -105,4 +107,30 @@ table thead tr {
   border: "none";
   box-shadow: "none";
   background-color: "transparent";
+}
+.header-container {
+  position: relative;
+  min-height: 120px;
+  height: 8vh;
+  background-color: rgba(255, 255, 255, 0.6);
+  flex-direction: column;
+  display: flex;
+}
+.nav-title {
+  margin: auto;
+  width: fit-content;
+
+  font-size: 2.5em;
+  font-family: "Domine-SB";
+}
+.header-buttons-container .btn {
+  margin: 5px;
+  margin-top: 0;
+  font-size: 1.5em;
+  flex-grow: 0.1;
+  padding: 0.1rem;
+}
+.header-buttons-container {
+  flex-direction: row;
+  justify-content: center;
 }
