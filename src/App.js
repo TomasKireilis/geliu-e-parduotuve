@@ -9,9 +9,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          <Header />
-        </header>
+        <Header />
+
         <Route exact path="/" component={FrontPage} />
         <Route exact path="/cart" component={ShoppingCartTable} />
       </div>
