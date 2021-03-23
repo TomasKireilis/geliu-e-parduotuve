@@ -3,7 +3,7 @@ import ShoppingCartTable from "./ShoppingCartTable";
 
 function ShoppingCartPage({ updateHeaderTitle }) {
   useEffect(() => {
-    updateHeaderTitle("Your shopping cart");
+    updateHeaderTitle("Pirkinių krepšelis");
   }, []);
   return (
     <div>
