@@ -48,6 +48,7 @@
   justify-content: center;
   width: 70%;
   margin: auto;
+  margin-top: 10px;
 }
 .product-popup-button {
   width: 100%;
@@ -133,4 +134,14 @@ table thead tr {
 .header-buttons-container {
   flex-direction: row;
   justify-content: center;
+}
+.shopping-cart-table {
+  position: relative;
+  background-color: rgba(248, 248, 255, 0.9);
+  max-width: 95%;
+  margin: auto;
+  margin-top: 10px;
+}
+.shopping-cart-table thead {
+  background-color: rgba(248, 248, 255, 0.5);
 }

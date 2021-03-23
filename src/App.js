@@ -1,18 +1,33 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ShoppingCartTable from "./ShoppingCartPage/ShoppingCartTable";
 import FrontPage from "./FrontPage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "Header/Header";
+import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
+import { useState } from "react";
 
 function App() {
+  const [headerTitle, setHeaderTitle] = useState("Gėlių e-parduotuvė");
+  const updateHeaderTitle = (title) => {
+    setHeaderTitle(title);
+  };
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header title={headerTitle} />
 
-        <Route exact path="/" component={FrontPage} />
-        <Route exact path="/cart" component={ShoppingCartTable} />
+        <Route
+          exact
+          path="/"
+          component={() => <FrontPage updateHeaderTitle={updateHeaderTitle} />}
+        />
+        <Route
+          exact
+          path="/cart"
+          component={() => (
+            <ShoppingCartPage updateHeaderTitle={updateHeaderTitle} />
+          )}
+        />
       </div>
     </Router>
   );

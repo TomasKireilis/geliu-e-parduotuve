@@ -2,11 +2,11 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-function Header() {
+function Header({ title }) {
   return (
     <header className="App-header">
       <Container className="header-container" fluid>
-        <div className="nav-title">Gėlių e-parduotuvė</div>
+        <div className="nav-title">{title}</div>
         <Row className="header-buttons-container">
           <Nav.Link href="/" className="btn btn-primary">
             Home
