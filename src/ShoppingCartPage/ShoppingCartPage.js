@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
-import MainScreen from "MainScreen";
+import ShoppingCartTable from "./ShoppingCartTable";
 
-const FrontPage = ({ updateHeaderTitle }) => {
+function ShoppingCartPage({ updateHeaderTitle }) {
   useEffect(() => {
     updateHeaderTitle("Your shopping cart");
   }, []);
   return (
-    <>
+    <div>
       <div className="fixed-full-screen bacround-image"></div>
       <div className="fixed-full-screen backround-color"></div>
-      <MainScreen updateHeaderTitle={updateHeaderTitle} />
-    </>
+      <ShoppingCartTable />
+    </div>
   );
-};
+}
 
-export default FrontPage;
+export default ShoppingCartPage;
