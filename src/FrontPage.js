@@ -3,13 +3,13 @@ import MainScreen from "MainScreen";
 
 const FrontPage = ({ updateHeaderTitle }) => {
   useEffect(() => {
-    updateHeaderTitle("Your shopping cart");
+    updateHeaderTitle("Gėlių e-parduotuvė");
   }, []);
   return (
     <>
       <div className="fixed-full-screen bacround-image"></div>
       <div className="fixed-full-screen backround-color"></div>
-      <MainScreen updateHeaderTitle={updateHeaderTitle} />
+      <MainScreen />
     </>
   );
 };

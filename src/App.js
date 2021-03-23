@@ -19,10 +19,7 @@ function App() {
         <Route
           exact
           path="/"
-          component={FrontPage}
-          component={() => (
-            <FrontPage updateHeaderTitle={(value) => updateHeaderTitle} />
-          )}
+          component={() => <FrontPage updateHeaderTitle={updateHeaderTitle} />}
         />
         <Route
           exact
