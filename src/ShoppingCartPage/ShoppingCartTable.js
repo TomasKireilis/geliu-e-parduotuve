@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Table from "react-bootstrap/Table";
 import ShoppingCartRow from "./ShoppingCartRow";
-import tempMockItems from "./TempMockItems";
+import { GlobalContext } from '../context/GlobalState.js';
 
 const ShoppingCartTable = () => {
+  const { cartItems } = useContext(GlobalContext);
+
   return (
     <Table bordered hover className="shopping-cart-table">
       <thead>
@@ -17,7 +19,7 @@ const ShoppingCartTable = () => {
         </tr>
       </thead>
       <tbody>
-        {tempMockItems.map((item) => (
+        {cartItems.map((item) => (
           <ShoppingCartRow item={item} key={item.id} />
         ))}
       </tbody>
