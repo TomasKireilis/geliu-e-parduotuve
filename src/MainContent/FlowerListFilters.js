@@ -9,7 +9,10 @@ function FlowerListFilters({ priceRange, handleChange }) {
   const [currentType, setcurrentType] = useState(0);
   const [currentName, setCurrentName] = useState(0);
   const updateNameFilter = (event) => {
-    setCurrentName(event.target.value.toLowerCase());
+    var specialSymbolsRegex = /[`~!@#$%^&*()-_+{}[\]\\|,.//?;':"]/g;
+    var clearedString = setCurrentName(
+      event.target.value.replace(specialSymbolsRegex, "").toLowerCase()
+    );
   };
   const updateTypeFilter = (event) => {
     setcurrentType(event.target.value);
