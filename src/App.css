@@ -145,3 +145,10 @@ table thead tr {
 .shopping-cart-table thead {
   background-color: rgba(248, 248, 255, 0.5);
 }
+.flower-list-filter {
+  position: relative;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
+}
