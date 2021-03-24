@@ -34,6 +34,7 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [cartItems, dispatchCartItems] = useReducer(AppReducer, initialState);
+
   function deleteItem(id) {
     try {
       dispatchCartItems({
@@ -54,10 +55,17 @@ export const GlobalProvider = ({ children }) => {
       } catch (error) {}
     }
   }, []);
-  useEffect(() => {
-    localStorage.setItem("my-shopping-cart", JSON.stringify(cartItems));
-  }, [cartItems]);
 
+  useEffect(() => {
+    setLacalStorageData();
+  });
+
+  const setLacalStorageData = () => {
+    localStorage.setItem(
+      "my-shopping-cart",
+      JSON.stringify(cartItems.cartItems)
+    );
+  };
   return (
     <GlobalContext.Provider
       value={{
