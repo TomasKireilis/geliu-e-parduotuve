@@ -57,10 +57,10 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    setLacalStorageData();
+    setLocalStorageData();
   });
 
-  const setLacalStorageData = () => {
+  const setLocalStorageData = () => {
     localStorage.setItem(
       "my-shopping-cart",
       JSON.stringify(cartItems.cartItems)
