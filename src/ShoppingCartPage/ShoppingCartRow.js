@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MdClear } from "react-icons/md";
 import Button from "react-bootstrap/Button";
+import { GlobalContext } from '../context/GlobalState.js';
 
 const ShoppingCartRow = ({ item }) => {
   const [amount, setAmount] = useState(item.amount);
-
-  const deleteFromCart = () => {};
+  const { deleteItem } = useContext(GlobalContext);
 
   const onAmountChange = (e) => {
     let inputAmount = e.target.value;
@@ -36,7 +36,7 @@ const ShoppingCartRow = ({ item }) => {
         <Button
           type="button"
           variant="delete"
-          onClick={() => deleteFromCart(item.id)}
+          onClick={() => deleteItem(item.id)}
         >
           <MdClear size={20} />
         </Button>
