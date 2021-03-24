@@ -33,11 +33,11 @@ const initialState = {
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-  const [cartItems, dispatchCartItems] = useReducer(AppReducer, initialState);
+  const [state, dispatch] = useReducer(AppReducer, initialState);
 
   function deleteItem(id) {
     try {
-      dispatchCartItems({
+      dispatch({
         type: "DELETE_ITEM",
         payload: id,
       });
@@ -48,7 +48,7 @@ export const GlobalProvider = ({ children }) => {
     const data = localStorage.getItem("my-shopping-cart");
     if (data) {
       try {
-        dispatchCartItems({
+        dispatch({
           type: "ADD_BASKET",
           payload: JSON.parse(data),
         });
@@ -61,15 +61,12 @@ export const GlobalProvider = ({ children }) => {
   });
 
   const setLocalStorageData = () => {
-    localStorage.setItem(
-      "my-shopping-cart",
-      JSON.stringify(cartItems.cartItems)
-    );
+    localStorage.setItem("my-shopping-cart", JSON.stringify(state.cartItems));
   };
   return (
     <GlobalContext.Provider
       value={{
-        cartItems: cartItems.cartItems,
+        cartItems: state.cartItems,
         deleteItem,
       }}
     >
