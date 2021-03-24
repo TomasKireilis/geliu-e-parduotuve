@@ -1,7 +1,8 @@
 import Product from "MainContent/Product";
 import React, { useState } from "react";
-import { Col, Form, Row } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
+import { Col, Row } from "react-bootstrap";
+
+import FlowerListFilters from "./FlowerListFilters";
 
 function FlowerList() {
   const data = [
@@ -20,25 +21,23 @@ function FlowerList() {
     );
   };
   return (
-    <>
-      <Form className="flower-list-filter">
-        <Row>
-          <Col>
-            <Form.Control placeholder="Ieškoti vardo" onChange={handleChange} />
-          </Col>
-        </Row>
-      </Form>
-      <div className="flower-list">
-        {filteredFlowerList.map((item, index) => (
-          <Product
-            key={index}
-            imgSrc={item.imgSrc}
-            title={item.name}
-            info={item.info}
-          ></Product>
-        ))}
-      </div>
-    </>
+    <Col>
+      <Row>
+        <FlowerListFilters handleChange={handleChange} />
+      </Row>
+      <Row>
+        <div className="flower-list">
+          {filteredFlowerList.map((item, index) => (
+            <Product
+              key={index}
+              imgSrc={item.imgSrc}
+              title={item.name}
+              info={item.info}
+            ></Product>
+          ))}
+        </div>
+      </Row>
+    </Col>
   );
 }
 
