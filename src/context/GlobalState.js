@@ -16,17 +16,12 @@ export const GlobalProvider = ({ children }) => {
 
     function deleteItem(id) {
       try {
-        // await axios.delete(`/api/cartIems/${id}`);
           dispatch({
             type: 'DELETE_ITEM',
             payload: id,
         });
       }
        catch (error) {
-        // dispatch({
-        //   type: 'ITEM_DELETE_ERROR',
-        //   payload: error.response.data.error,
-        // });
        }
     }
 
