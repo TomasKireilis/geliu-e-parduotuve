@@ -1,7 +1,6 @@
 import Product from "MainContent/Product";
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-
 import FlowerListFilters from "./FlowerListFilters";
 
 function FlowerList() {
@@ -56,28 +55,36 @@ function FlowerList() {
       type: "flower",
     },
   ];
+
   const getProductsPriceRange = () => {
     const prices = data.map((x) => x.price);
     return { min: Math.min(...prices), max: Math.max(...prices) };
   };
+
   const [filteredFlowerList, setFilteredFlowerList] = useState(data);
+
   const handleChange = (value) => {
     var filteringData = JSON.parse(JSON.stringify(data));
+
     if (value.name && value.name != "") {
       filteringData = filteringData.filter((x) =>
         x.name.toLowerCase().match(value.name)
       );
     }
+
     if (value.price) {
       filteringData = filteringData.filter(
         (x) => x.price >= value.price.min && x.price <= value.price.max
       );
     }
+
     if (value.type) {
       filteringData = filteringData.filter((x) => x.type === value.type);
     }
+
     setFilteredFlowerList(filteringData);
   };
+
   return (
     <Col>
       <Row>
