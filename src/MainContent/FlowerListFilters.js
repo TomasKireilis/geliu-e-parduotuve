@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
+
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 function FlowerListFilters({ priceRange, handleChange }) {
@@ -10,7 +10,7 @@ function FlowerListFilters({ priceRange, handleChange }) {
   const [currentName, setCurrentName] = useState(0);
   const updateNameFilter = (event) => {
     var specialSymbolsRegex = /[`~!@#$%^&*()-_+{}[\]\\|,.//?;':"]/g;
-    var clearedString = setCurrentName(
+    setCurrentName(
       event.target.value.replace(specialSymbolsRegex, "").toLowerCase()
     );
   };
