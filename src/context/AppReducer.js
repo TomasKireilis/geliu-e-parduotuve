@@ -19,9 +19,14 @@ function AppReducer(state, action) {
       }
       return {
         ...state,
-        cartItems: state.cartItems,
+        cartItems: [...state.cartItems],
       };
     }
+    case "UPDATE_CART_NOTE":
+      return {
+        ...state,
+        cartNote: action.payload.text,
+      };
     default:
       return state;
   }

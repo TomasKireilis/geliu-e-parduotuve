@@ -145,3 +145,26 @@ table thead tr {
 .shopping-cart-table thead {
   background-color: rgba(248, 248, 255, 0.5);
 }
+.basket-note-container {
+  position: relative;
+  max-width: 95%;
+  margin: auto;
+  display: flex;
+}
+.basket-note-textarea {
+  position: relative;
+  width: 30vw;
+  min-width: 500px;
+  background-color: rgba(248, 248, 255, 0.9);
+
+  overflow: auto;
+  outline: none;
+
+  resize: none; /*remove the resize handle on the bottom right*/
+}
+
+.basket-note-textarea :focus :hover {
+  outline: none;
+  border: 3px solid rgba(0, 0, 0, 0.8);
+  background-color: white;
+}
