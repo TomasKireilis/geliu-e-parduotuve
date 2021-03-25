@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Table from "react-bootstrap/Table";
 import ShoppingCartRow from "./ShoppingCartRow";
-import { GlobalContext } from "../context/GlobalState.js";
+import { GlobalContext } from "Context/GlobalState.js";
 
 const ShoppingCartTable = () => {
   const { cartItems } = useContext(GlobalContext);

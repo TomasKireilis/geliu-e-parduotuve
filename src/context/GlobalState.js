@@ -44,6 +44,15 @@ export const GlobalProvider = ({ children }) => {
     } catch (error) {}
   }
 
+  function updateItemAmount(id, amount) {
+    try {
+      dispatch({
+        type: "UPDATE_ITEM_AMOUNT",
+        payload: { id, amount },
+      });
+    } catch (error) {}
+  }
+
   useEffect(() => {
     const data = localStorage.getItem("my-shopping-cart");
     if (data) {
@@ -68,6 +77,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         cartItems: state.cartItems,
         deleteItem,
+        updateItemAmount,
       }}
     >
       {children}
