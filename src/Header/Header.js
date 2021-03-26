@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 function Header({ title }) {
   return (
-    <header className="App-header">
+    <header>
       <Container className="header-container" fluid>
         <div className="nav-title">{title}</div>
         <Row className="header-buttons-container">
