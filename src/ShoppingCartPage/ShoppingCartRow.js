@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { MdClear } from "react-icons/md";
 import Button from "react-bootstrap/Button";
-import { GlobalContext } from '../context/GlobalState.js';
+import { GlobalContext } from "Context/GlobalState.js";
 
 const ShoppingCartRow = ({ item }) => {
   const [amount, setAmount] = useState(item.amount);
-  const { deleteItem } = useContext(GlobalContext);
+  const { deleteItem, updateItemAmount } = useContext(GlobalContext);
 
   const onAmountChange = (e) => {
     let inputAmount = e.target.value;
@@ -14,6 +14,10 @@ const ShoppingCartRow = ({ item }) => {
     }
     setAmount(inputAmount);
   };
+
+  useEffect(() => {
+    updateItemAmount(item.id, amount);
+  }, [amount]);
 
   return (
     <tr>

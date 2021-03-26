@@ -10,6 +10,18 @@ function AppReducer(state, action) {
         ...state,
         cartItems: action.payload,
       };
+    case "UPDATE_ITEM_AMOUNT": {
+      for (var i in state.cartItems) {
+        if (state.cartItems[i].id === action.payload.id) {
+          state.cartItems[i].amount = action.payload.amount;
+          break;
+        }
+      }
+      return {
+        ...state,
+        cartItems: state.cartItems,
+      };
+    }
     default:
       return state;
   }

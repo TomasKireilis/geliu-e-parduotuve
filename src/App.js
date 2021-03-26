@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "Header/Header";
 import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
 import { useState } from "react";
-import { GlobalProvider } from "./context/GlobalState";
+import { GlobalProvider } from "Context/GlobalState";
+
 
 function App() {
   const [headerTitle, setHeaderTitle] = useState("Gėlių e-parduotuvė");
