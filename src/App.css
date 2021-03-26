@@ -168,7 +168,7 @@ table thead tr {
   outline: none;
   border: 3px solid rgba(0, 0, 0, 0.8);
   background-color: white;
-
+}
 .flower-list-container {
   position: relative;
   background-color: rgba(255, 255, 255, 0.6);
@@ -210,5 +210,4 @@ table thead tr {
 .input-range {
   margin-left: 15px;
   margin-top: 15px;
-
 }
