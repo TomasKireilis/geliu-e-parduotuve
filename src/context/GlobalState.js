@@ -28,6 +28,7 @@ const initialState = {
       amount: 1,
     },
   ],
+  cartNote: "",
 };
 
 export const GlobalContext = createContext(initialState);
@@ -52,32 +53,50 @@ export const GlobalProvider = ({ children }) => {
       });
     } catch (error) {}
   }
+  function updateCartNote(text) {
+    try {
+      dispatch({
+        type: "UPDATE_CART_NOTE",
+        payload: { text },
+      });
+    } catch (error) {}
+  }
 
   useEffect(() => {
-    const data = localStorage.getItem("my-shopping-cart");
-    if (data) {
+    const cart = localStorage.getItem("my-shopping-cart");
+    if (cart) {
       try {
         dispatch({
           type: "ADD_BASKET",
-          payload: JSON.parse(data),
+          payload: JSON.parse(cart),
         });
+      } catch (error) {}
+    }
+
+    const note = localStorage.getItem("my-shopping-cart-note");
+    if (note) {
+      try {
+        updateCartNote(note);
       } catch (error) {}
     }
   }, []);
 
   useEffect(() => {
-    setLocalStorageData();
-  });
-
-  const setLocalStorageData = () => {
     localStorage.setItem("my-shopping-cart", JSON.stringify(state.cartItems));
-  };
+  }, [state.cartItems]);
+
+  useEffect(() => {
+    localStorage.setItem("my-shopping-cart-note", state.cartNote);
+  }, [state.cartNote]);
+
   return (
     <GlobalContext.Provider
       value={{
         cartItems: state.cartItems,
         deleteItem,
         updateItemAmount,
+        cartNote: state.cartNote,
+        updateCartNote,
       }}
     >
       {children}

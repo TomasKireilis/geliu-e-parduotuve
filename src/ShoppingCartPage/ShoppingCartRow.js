@@ -31,6 +31,7 @@ const ShoppingCartRow = ({ item }) => {
           type="number"
           name="amount"
           id="amount"
+          min="1"
           value={amount}
           onChange={onAmountChange}
         />
