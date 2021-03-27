@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ShoppingCartTable from "./ShoppingCartTable";
-
 import ShoppingCartNote from "./ShoppingCartNote";
+import ShoppingCartTotalField from "./ShoppingCartTotalField";
 
 function ShoppingCartPage({ updateHeaderTitle }) {
   useEffect(() => {
@@ -14,6 +14,7 @@ function ShoppingCartPage({ updateHeaderTitle }) {
       <div className="fixed-full-screen backround-color"></div>
       <ShoppingCartTable />
       <ShoppingCartNote />
+      <ShoppingCartTotalField />
     </div>
   );
 }

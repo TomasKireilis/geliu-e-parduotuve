@@ -211,3 +211,19 @@ table thead tr {
   margin-left: 15px;
   margin-top: 15px;
 }
+
+.basket-total-container {
+  position: relative;
+  float: right;
+  justify-content: left;
+  left: -38px;
+  top: -16px;
+  max-width: 12%;
+  margin: auto;
+  display: flex;
+  width: 30vw;
+  min-width: 50px;
+  background-color: rgba(248, 248, 255, 0.9);
+  overflow: auto;
+  outline: none;
+}

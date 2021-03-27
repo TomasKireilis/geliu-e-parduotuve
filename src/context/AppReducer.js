@@ -25,6 +25,11 @@ function AppReducer(state, action) {
         ...state,
         cartNote: action.payload.text,
       };
+    case "UPDATE_TOTAL":
+      return {
+        ...state,
+        totalSum: state.cartItems.reduce((sum, item) => sum + item.amount * item.price, 0),
+      };
     default:
       return state;
   }
