@@ -6,8 +6,7 @@ function ShoppingCartTotalField() {
 
   return (
       <div className="basket-total-container">
-        Bendra suma: { }
-        {totalSum.toFixed(2)}
+      Bendra suma: {totalSum.toFixed(2)}
     </div> 
   );
 }

@@ -216,8 +216,8 @@ table thead tr {
   position: relative;
   float: right;
   justify-content: left;
-  left: -38px;
-  top: -16px;
+  left: -2.5vw;
+  top: -0.6vw;
   max-width: 12%;
   margin: auto;
   display: flex;
