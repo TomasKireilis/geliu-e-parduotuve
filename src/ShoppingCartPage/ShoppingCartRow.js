@@ -5,7 +5,7 @@ import { GlobalContext } from "Context/GlobalState.js";
 
 const ShoppingCartRow = ({ item }) => {
   const [amount, setAmount] = useState(item.amount);
-  const { deleteItem, updateItemAmount } = useContext(GlobalContext);
+  const { deleteItem, updateItemAmount, updateTotal } = useContext(GlobalContext);
 
   const onAmountChange = (e) => {
     let inputAmount = e.target.value;
@@ -15,8 +15,14 @@ const ShoppingCartRow = ({ item }) => {
     setAmount(inputAmount);
   };
 
+  const onDelete = (id) => {
+    deleteItem(id); 
+    updateTotal();
+  }
+
   useEffect(() => {
     updateItemAmount(item.id, amount);
+    updateTotal();
   }, [amount]);
 
   return (
@@ -41,7 +47,7 @@ const ShoppingCartRow = ({ item }) => {
         <Button
           type="button"
           variant="delete"
-          onClick={() => deleteItem(item.id)}
+          onClick={() => onDelete(item.id)}
         >
           <MdClear size={20} />
         </Button>

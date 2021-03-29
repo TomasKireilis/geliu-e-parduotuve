@@ -29,6 +29,7 @@ const initialState = {
     },
   ],
   cartNote: "",
+  totalSum: 0,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -53,11 +54,20 @@ export const GlobalProvider = ({ children }) => {
       });
     } catch (error) {}
   }
+
   function updateCartNote(text) {
     try {
       dispatch({
         type: "UPDATE_CART_NOTE",
         payload: { text },
+      });
+    } catch (error) {}
+  }
+
+  function updateTotal() {
+    try {
+      dispatch({
+        type: "UPDATE_TOTAL",
       });
     } catch (error) {}
   }
@@ -97,6 +107,8 @@ export const GlobalProvider = ({ children }) => {
         updateItemAmount,
         cartNote: state.cartNote,
         updateCartNote,
+        totalSum: state.totalSum,
+        updateTotal
       }}
     >
       {children}
