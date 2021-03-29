@@ -46,7 +46,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 70%;
+
+  width: 100%;
   margin: auto;
   margin-top: 3px;
 }
@@ -135,27 +136,25 @@ table thead tr {
   flex-direction: row;
   justify-content: center;
 }
+
 .shopping-cart-table {
   position: relative;
   background-color: rgba(248, 248, 255, 0.9);
-  max-width: 95%;
   margin: auto;
-  margin-top: 10px;
 }
+
 .shopping-cart-table thead {
   background-color: rgba(248, 248, 255, 0.5);
 }
 
-.basket-note-container {
-  position: relative;
-  max-width: 95%;
-  margin: auto;
-  display: flex;
-}
 .basket-note-textarea {
   position: relative;
-  width: 30vw;
-  min-width: 500px;
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
+    1 25%;
+
+  width: 100%;
+  max-width: max(30vw, 350px);
   background-color: rgba(248, 248, 255, 0.9);
 
   overflow: auto;
@@ -178,11 +177,6 @@ table thead tr {
   margin-top: 10px;
   padding-top: 1vh;
   padding-bottom: 1vh;
-}
-
-.flower-list {
-  position: relative;
-  width: 100%;
 }
 
 .flower-list-container .dropdown .btn {
@@ -214,16 +208,22 @@ table thead tr {
 
 .basket-total-container {
   position: relative;
+  display: flex;
   float: right;
   justify-content: left;
-  left: -2.5vw;
+  margin-right: 0;
+  margin-left: auto;
   top: -0.6vw;
-  max-width: 12%;
-  margin: auto;
-  display: flex;
-  width: 30vw;
+  padding: 4px;
+  width: fit-content;
   min-width: 50px;
   background-color: rgba(248, 248, 255, 0.9);
   overflow: auto;
   outline: none;
+}
+
+.basket-content {
+  margin: auto;
+  margin-top: 10px;
+  width: 90%;
 }
