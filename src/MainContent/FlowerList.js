@@ -101,6 +101,7 @@ function FlowerList() {
               imgSrc={item.imgSrc}
               title={item.name}
               info={item.info}
+              price={item.price}
             ></Product>
           ))}
         </div>

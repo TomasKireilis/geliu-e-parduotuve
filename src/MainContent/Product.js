@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+
 function Product(props) {
   const [popupAcive, setpopupAcive] = useState(false);
   return (
@@ -25,11 +26,12 @@ function Product(props) {
               <Col style={{ fontSize: "2em", marginLeft: "10px" }}>
                 <Row style={{ fontSize: "1.5em" }}>{props.title}</Row>
                 <Row>{props.info}</Row>
+                <Row><div className="product-popup-price">{props.price} €</div></Row>
               </Col>
               <Col xs="4">
                 <Row>
                   <img className="product-popup-image" src={props.imgSrc}></img>
-                </Row>
+                </Row>   
                 <Row>
                   <Button className="product-popup-button">
                     Add to your basket
