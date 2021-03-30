@@ -37,6 +37,14 @@
   position: relative;
   width: 100%;
 }
+
+.product-popup-price {
+  position: relative;
+  margin-left: -59vw;
+  margin-top: 15vw;
+  font-size: 3vw;
+}
+
 .main-content {
   position: relative;
   width: 100%;
