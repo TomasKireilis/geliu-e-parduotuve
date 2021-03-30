@@ -26,11 +26,11 @@ function Product(props) {
               <Col style={{ fontSize: "2em", marginLeft: "10px" }}>
                 <Row style={{ fontSize: "1.5em" }}>{props.title}</Row>
                 <Row>{props.info}</Row>
+                <Row><div className="product-popup-price">{props.price} €</div></Row>
               </Col>
               <Col xs="4">
                 <Row>
                   <img className="product-popup-image" src={props.imgSrc}></img>
-                  <div className="product-popup-price">{props.price} €</div>
                 </Row>   
                 <Row>
                   <Button className="product-popup-button">
