@@ -41,6 +41,8 @@ function FlowerList() {
 
   const getProductsPriceRange = () => {
     const prices = data.map((x) => x.price);
+    if(prices && prices.length === 0)
+    {return {min: 0, max: 1}}
     return { min: Math.min(...prices), max: Math.max(...prices) };
   };
 
