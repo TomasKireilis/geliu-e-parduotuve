@@ -5,8 +5,8 @@ import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 
 function FlowerListFilters({ priceRange, handleChange }) {
-  const [currentPriceValues, setCurrentPriceValues] = useState(priceRange());
-  const [currentType, setcurrentType] = useState(0);
+  const [currentPriceValues, setCurrentPriceValues] = useState({min: 0, max: 9999});
+  const [currentType, setCurrentType] = useState(0);
   const [currentName, setCurrentName] = useState(0);
 
   const updateNameFilter = (event) => {
@@ -17,7 +17,14 @@ function FlowerListFilters({ priceRange, handleChange }) {
     );
   };
   const updateTypeFilter = (event) => {
-    setcurrentType(event.target.value);
+    setCurrentType(event.target.value);
+  };
+
+  const selectedPriceRange = (currentValue) => {
+    return {
+      min: Math.max(currentValue.min, priceRange().min),
+      max: Math.min(currentValue.max, priceRange().max),
+    };
   };
 
   useEffect(() => {
@@ -50,7 +57,7 @@ function FlowerListFilters({ priceRange, handleChange }) {
               maxValue={priceRange().max}
               minValue={priceRange().min}
               formatLabel={(value) => `${value} eur`}
-              value={currentPriceValues}
+              value={selectedPriceRange(currentPriceValues)}
               onChange={(value) => setCurrentPriceValues(value)}
               onChangeComplete={(value) => console.log(value)}
               className="input-range"
