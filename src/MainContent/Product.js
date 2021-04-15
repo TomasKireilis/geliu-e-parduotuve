@@ -35,18 +35,18 @@ function Product(props) {
             style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}
           >
             <Row>
-              <Col style={{ fontSize: "2em", marginLeft: "10px" }}>
-                <Row style={{ fontSize: "1.5em" }}>{props.title}</Row>
-                <Row>{props.info}</Row>
+              <Col style={{ fontSize: "3em", marginLeft: "10px" }}>
+                <Row>{props.title}</Row>
+                <Row className="product-info">{props.info}</Row>
                 <Row>
                   <div className="product-popup-price">{props.price} €</div>
                 </Row>
               </Col>
-              <Col xs="4">
+              <Col xs="10" style={{ maxWidth: "400px" }}>
                 <Row>
                   <img className="product-popup-image" src={props.imgSrc}></img>
+                  {AddToBasketPopup()}
                 </Row>
-                <Row>{AddToBasketPopup()}</Row>
               </Col>
             </Row>
             <Row></Row>

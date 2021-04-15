@@ -30,18 +30,22 @@
   margin: auto;
 }
 .modal-60w {
-  width: 60vw !important;
-  max-width: 60vw !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: fit-content !important;
+  max-width: 95vw !important;
 }
 .product-popup-image {
   position: relative;
   width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 
 .product-popup-price {
   position: relative;
   margin-top: 2.35em;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .main-content {
@@ -63,10 +67,14 @@
   min-width: 100px;
   height: 8vh;
   min-height: 50px;
-  margin-top: 5px;
-  position: absolute;
-  right: 0;
-  font-size: 2vw !important;
+  margin-top: 10px;
+  position: relative;
+
+  font-size: min(2em, 5vw) !important;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .product-container {
@@ -233,4 +241,8 @@ table thead tr {
   margin: auto;
   margin-top: 10px;
   width: 90%;
+}
+.product-info {
+  font-size: min(0.5em, 4vw);
+  word-break: break-word;
 }
