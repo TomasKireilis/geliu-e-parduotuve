@@ -9,7 +9,7 @@ function Product(props) {
   const [popupAcive, setpopupAcive] = useState(false);
 
   const AddToBasketPopup = () => {
-    if (props.amount > 1) {
+    if (props.amount > 0) {
       return <Button className="product-popup-button">Įdėti į krepšelį</Button>;
     } else {
       return (
