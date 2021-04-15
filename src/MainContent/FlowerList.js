@@ -1,15 +1,15 @@
 import Product from "MainContent/Product";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import FlowerListFilters from "./FlowerListFilters";
-import {getAllFlowers} from "Service/FlowerService.js";
+import { getAllFlowers } from "Service/FlowerService.js";
 
 function FlowerList() {
-
   const [data, setData] = useState([]);
   useEffect(async () => {
-    const a = JSON.parse(JSON.stringify( await getAllFlowers()));
-    setData(a) },[]);
+    const a = JSON.parse(JSON.stringify(await getAllFlowers()));
+    setData(a);
+  }, []);
 
   const [filteredFlowerList, setFilteredFlowerList] = useState(data);
 
@@ -18,13 +18,13 @@ function FlowerList() {
 
     if (value.name && value.name != "") {
       filteringData = filteringData.filter((x) =>
-          x.name.toLowerCase().match(value.name)
+        x.name.toLowerCase().match(value.name)
       );
     }
 
     if (value.price) {
       filteringData = filteringData.filter(
-          (x) => x.price >= value.price.min && x.price <= value.price.max
+        (x) => x.price >= value.price.min && x.price <= value.price.max
       );
     }
 
@@ -37,12 +37,13 @@ function FlowerList() {
 
   useEffect(async () => {
     handleChange(data);
-    },[data]);
+  }, [data]);
 
   const getProductsPriceRange = () => {
     const prices = data.map((x) => x.price);
-    if(prices && prices.length === 0)
-    {return {min: 0, max: 1}}
+    if (prices && prices.length === 0) {
+      return { min: 0, max: 1 };
+    }
     return { min: Math.min(...prices), max: Math.max(...prices) };
   };
 
@@ -63,6 +64,7 @@ function FlowerList() {
               title={item.name}
               info={item.info}
               price={item.price}
+              amount={item.amount}
             ></Product>
           ))}
         </div>

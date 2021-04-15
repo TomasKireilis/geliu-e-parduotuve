@@ -7,6 +7,18 @@ import Button from "react-bootstrap/Button";
 
 function Product(props) {
   const [popupAcive, setpopupAcive] = useState(false);
+
+  const AddToBasketPopup = () => {
+    if (props.amount > 1) {
+      return <Button className="product-popup-button">Įdėti į krepšelį</Button>;
+    } else {
+      return (
+        <Button className="product-popup-button inactive" disabled={true}>
+          Nėra sandėlyje
+        </Button>
+      );
+    }
+  };
   return (
     <>
       <div className="product-container" onClick={() => setpopupAcive(true)}>
@@ -26,17 +38,15 @@ function Product(props) {
               <Col style={{ fontSize: "2em", marginLeft: "10px" }}>
                 <Row style={{ fontSize: "1.5em" }}>{props.title}</Row>
                 <Row>{props.info}</Row>
-                <Row><div className="product-popup-price">{props.price} €</div></Row>
+                <Row>
+                  <div className="product-popup-price">{props.price} €</div>
+                </Row>
               </Col>
               <Col xs="4">
                 <Row>
                   <img className="product-popup-image" src={props.imgSrc}></img>
-                </Row>   
-                <Row>
-                  <Button className="product-popup-button">
-                    Add to your basket
-                  </Button>
                 </Row>
+                <Row>{AddToBasketPopup()}</Row>
               </Col>
             </Row>
             <Row></Row>
