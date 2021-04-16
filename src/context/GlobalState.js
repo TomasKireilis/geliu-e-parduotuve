@@ -2,32 +2,7 @@ import React, { createContext, useEffect, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
-  cartItems: [
-    {
-      id: 1,
-      image:
-        "https://images.unsplash.com/photo-1554631221-f9603e6808be?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-      title: "Kaktusas",
-      price: 5.99,
-      amount: 4,
-    },
-    {
-      id: 2,
-      image:
-        "https://www.ikea.com/gb/en/images/products/smycka-artificial-flower-rose-red__0636963_pe698124_s5.jpg",
-      title: "Rožės",
-      price: 25.5,
-      amount: 2,
-    },
-    {
-      id: 3,
-      image:
-        "https://i.pinimg.com/564x/18/4b/61/184b61bfe08b19ee4f4e07d605673d6f.jpg",
-      title: "Prabangi puokste",
-      price: 100,
-      amount: 1,
-    },
-  ],
+  cartItems: [],
   cartNote: "",
   totalSum: 0,
 };
@@ -72,6 +47,20 @@ export const GlobalProvider = ({ children }) => {
     } catch (error) {}
   }
 
+  function updateCart(newItem) {
+    try {
+      const index = state.cartItems.findIndex(existingItem => { return existingItem.id === newItem.id })
+      if(index >= 0) {
+        updateItemAmount(state.cartItems[index].id, state.cartItems[index].amount*1+1)
+      } else {
+        dispatch({
+          type: "UPDATE_CART",
+          payload: newItem,
+        });
+      }  
+    } catch (error) {}
+  }
+
   useEffect(() => {
     const cart = localStorage.getItem("my-shopping-cart");
     if (cart) {
@@ -108,7 +97,8 @@ export const GlobalProvider = ({ children }) => {
         cartNote: state.cartNote,
         updateCartNote,
         totalSum: state.totalSum,
-        updateTotal
+        updateTotal,
+        updateCart
       }}
     >
       {children}

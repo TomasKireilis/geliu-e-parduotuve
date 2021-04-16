@@ -60,6 +60,7 @@ function FlowerList() {
           {filteredFlowerList.map((item, index) => (
             <Product
               key={index}
+              id={item.id}
               imgSrc={item.imgSrc}
               title={item.name}
               info={item.info}
