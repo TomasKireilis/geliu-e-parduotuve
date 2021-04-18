@@ -30,6 +30,11 @@ function AppReducer(state, action) {
         ...state,
         totalSum: state.cartItems.reduce((sum, item) => sum + item.amount * item.price, 0),
       };
+    case "UPDATE_CART":
+     return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+    };
     default:
       return state;
   }

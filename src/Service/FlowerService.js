@@ -8,6 +8,7 @@ function mapFlowerData(data) {
 
   for (let i = 0; i < data.length; i++) {
     let tempObject = {
+      id: data[i].id,
       imgSrc: "flowersIcon.jpg",
       name: data[i].name,
       info: data[i].description,
