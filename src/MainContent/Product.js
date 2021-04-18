@@ -24,7 +24,7 @@ function Product(props) {
       <div className="product-container" onClick={() => setpopupAcive(true)}>
         <img className="product-image" src={props.imgSrc}></img>
         <div className="product-title">{props.title}</div>
-        <div className="product-price">{props.price} €</div>
+        <div>{props.price} €</div>
       </div>
       {popupAcive && (
         <VerticallyCenteredModal
