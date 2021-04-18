@@ -51,7 +51,7 @@ export const GlobalProvider = ({ children }) => {
     try {
       const index = state.cartItems.findIndex(existingItem => { return existingItem.id === newItem.id })
       if(index >= 0) {
-        updateItemAmount(state.cartItems[index].id, state.cartItems[index].amount*1+1)
+        updateItemAmount(state.cartItems[index].id, (+state.cartItems[index].amount)+1)
       } else {
         dispatch({
           type: "UPDATE_CART",
