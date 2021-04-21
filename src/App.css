@@ -247,3 +247,23 @@ table thead tr {
   font-size: min(0.5em, 4vw);
   word-break: break-word;
 }
+
+.order-button {
+  position: relative;
+  display: flex;
+  float: right;
+  justify-content: left;
+  margin-right: 0;
+  margin-left: auto;
+  top: 0.6vw;
+  padding: 4px;
+  width: fit-content;
+  min-width: 50px;
+  overflow: auto;
+  outline: none;
+}
+
+.order-form {
+  padding: 15px;
+  background-color: rgba(248, 248, 255, 1);
+}
