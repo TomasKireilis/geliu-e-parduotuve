@@ -9,7 +9,7 @@ function mapFlowerData(data) {
   for (let i = 0; i < data.length; i++) {
     let tempObject = {
       id: data[i].id,
-      imgSrc: "flowersIcon.jpg",
+      imgSrc: getImageUrl(data[i].id),
       name: data[i].name,
       info: data[i].description,
       price: data[i].price,
@@ -25,4 +25,7 @@ function mapFlowerData(data) {
   }
 
   return temp;
+}
+export async function getImageUrl(imageId) {
+  return `http://localhost:8080/images/${imageId}`;
 }
