@@ -94,8 +94,12 @@
   font-size: 1.5em;
   margin-top: -1.5em;
   width: fit-content;
+  max-width: 250px;
   border-bottom-right-radius: 25px;
   border-top-right-radius: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .product-image {
   display: block;

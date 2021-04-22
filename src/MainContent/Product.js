@@ -61,7 +61,7 @@ function Product(props) {
             style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}
           >
             <Row>
-              <Col style={{ fontSize: "3em", marginLeft: "10px" }}>
+              <Col style={{ fontSize: "2.5em", marginLeft: "10px" }}>
                 <Row>{props.title}</Row>
                 <Row className="product-info">{props.info}</Row>
                 <Row>
