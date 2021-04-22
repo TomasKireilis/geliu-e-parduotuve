@@ -4,10 +4,12 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import ToastNotification from "MainContent/ToastNotification.js";
 import { GlobalContext } from "Context/GlobalState.js";
 
 function Product(props) {
   const [popupAcive, setpopupAcive] = useState(false);
+  const [toastActive, settoastActive] = useState(false);
   const { updateCart } = useContext(GlobalContext);
 
   const addToCart = () => {
@@ -19,6 +21,14 @@ function Product(props) {
       amount: 1,
     };
     updateCart(itemToAdd);
+    onShowAlert();
+  };
+
+  const onShowAlert = () => {
+    settoastActive(true);
+    window.setTimeout(() => {
+      settoastActive(false);
+    }, 2000);
   };
 
   const AddToBasketPopup = () => {
@@ -38,6 +48,7 @@ function Product(props) {
   };
   return (
     <>
+     {toastActive && <ToastNotification isOpen={toastActive}/>}
       <div className="product-container" onClick={() => setpopupAcive(true)}>
         <img
           className="product-image"
