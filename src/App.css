@@ -252,3 +252,9 @@ table thead tr {
   font-size: min(0.5em, 4vw);
   word-break: break-word;
 }
+
+.toast-notification {
+  z-index: 5000;
+  position: fixed;
+  margin-top: -180px;
+}
