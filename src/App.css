@@ -267,6 +267,7 @@ table thead tr {
   position: fixed;
   margin-top: -180px;
 }
+
 .account-login-icon {
   position: relative;
   width: 40px;
@@ -296,3 +297,4 @@ table thead tr {
 .blue {
   color: blue;
 }
+
