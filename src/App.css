@@ -253,8 +253,32 @@ table thead tr {
   word-break: break-word;
 }
 
+
+.order-button {
+  position: relative;
+  display: flex;
+  float: right;
+  justify-content: left;
+  margin-right: 0;
+  margin-left: auto;
+  top: 0.6vw;
+  padding: 4px;
+  width: fit-content;
+  min-width: 50px;
+  overflow: auto;
+  outline: none;
+}
+
+.order-form {
+  padding: 15px;
+  background-color: rgba(248, 248, 255, 1);
+  min-width: min(100vw, 400px);
+  width: 50vw;
+  max-width: 900px;
+}
 .toast-notification {
   z-index: 5000;
   position: fixed;
   margin-top: -180px;
+
 }
