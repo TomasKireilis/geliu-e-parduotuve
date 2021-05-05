@@ -140,9 +140,8 @@ table thead tr {
   display: flex;
 }
 .nav-title {
-  margin: auto;
+  margin: auto !important;
   width: fit-content;
-
   font-size: 2.5em;
   font-family: "Domine-SB";
 }
@@ -153,6 +152,16 @@ table thead tr {
   flex-grow: 0.1;
   padding: 0.1rem;
 }
+
+.login-button {
+  position: absolute;
+  margin: 5px;
+  margin-top: 0;
+  padding: 0.1rem;
+  right: 0;
+  margin-top: 0.5vh;
+}
+
 .header-buttons-container {
   flex-direction: row;
   justify-content: center;
@@ -251,4 +260,39 @@ table thead tr {
 .product-info {
   font-size: min(0.5em, 4vw);
   word-break: break-word;
+}
+
+.toast-notification {
+  z-index: 5000;
+  position: fixed;
+  margin-top: -180px;
+}
+.account-login-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 3px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.account-login-form {
+  padding: 10px;
+}
+.create-account-btn {
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* On mouse-over */
+.create-account-btn:hover {
+  background: #eee;
+}
+
+.blue {
+  color: blue;
 }

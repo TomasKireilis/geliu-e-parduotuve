@@ -5,6 +5,7 @@ const initialState = {
   cartItems: [],
   cartNote: "",
   totalSum: 0,
+  loginInfo: {},
 };
 
 export const GlobalContext = createContext(initialState);
@@ -49,15 +50,20 @@ export const GlobalProvider = ({ children }) => {
 
   function updateCart(newItem) {
     try {
-      const index = state.cartItems.findIndex(existingItem => { return existingItem.id === newItem.id })
-      if(index >= 0) {
-        updateItemAmount(state.cartItems[index].id, (+state.cartItems[index].amount)+1)
+      const index = state.cartItems.findIndex((existingItem) => {
+        return existingItem.id === newItem.id;
+      });
+      if (index >= 0) {
+        updateItemAmount(
+          state.cartItems[index].id,
+          +state.cartItems[index].amount + 1
+        );
       } else {
         dispatch({
           type: "UPDATE_CART",
           payload: newItem,
         });
-      }  
+      }
     } catch (error) {}
   }
 
@@ -98,7 +104,8 @@ export const GlobalProvider = ({ children }) => {
         updateCartNote,
         totalSum: state.totalSum,
         updateTotal,
-        updateCart
+        updateCart,
+        loginInfo: state.loginInfo,
       }}
     >
       {children}
