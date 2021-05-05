@@ -4,10 +4,12 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import ToastNotification from "MainContent/ToastNotification.js";
 import { GlobalContext } from "Context/GlobalState.js";
 
 function Product(props) {
   const [popupAcive, setpopupAcive] = useState(false);
+  const [toastActive, settoastActive] = useState(false);
   const { updateCart } = useContext(GlobalContext);
 
   const addToCart = () => {
@@ -16,18 +18,23 @@ function Product(props) {
       image: props.imgSrc,
       title: props.title,
       price: props.price,
-      amount: 1
-    }
+      amount: 1,
+    };
     updateCart(itemToAdd);
-  }
+    onShowAlert();
+  };
+
+  const onShowAlert = () => {
+    settoastActive(true);
+    window.setTimeout(() => {
+      settoastActive(false);
+    }, 2000);
+  };
 
   const AddToBasketPopup = () => {
     if (props.amount > 0) {
       return (
-        <Button
-          className="product-popup-button"
-          onClick={() => addToCart()}
-        >
+        <Button className="product-popup-button" onClick={() => addToCart()}>
           Įdėti į krepšelį
         </Button>
       );
@@ -41,8 +48,17 @@ function Product(props) {
   };
   return (
     <>
+     {toastActive && <ToastNotification isOpen={toastActive}/>}
       <div className="product-container" onClick={() => setpopupAcive(true)}>
-        <img className="product-image" src={props.imgSrc}></img>
+        <img
+          className="product-image"
+          src={props.imgSrc}
+          onError={(e) => {
+            e.target.onError = null;
+            e.target.src = "No_Image_Available.jpg";
+          }}
+        ></img>
+
         <div className="product-title">{props.title}</div>
         <div>{props.price} €</div>
       </div>
@@ -56,7 +72,7 @@ function Product(props) {
             style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}
           >
             <Row>
-              <Col style={{ fontSize: "3em", marginLeft: "10px" }}>
+              <Col style={{ fontSize: "2.5em", marginLeft: "10px" }}>
                 <Row>{props.title}</Row>
                 <Row className="product-info">{props.info}</Row>
                 <Row>
@@ -65,7 +81,14 @@ function Product(props) {
               </Col>
               <Col xs="10" style={{ maxWidth: "400px" }}>
                 <Row>
-                  <img className="product-popup-image" src={props.imgSrc}></img>
+                  <img
+                    className="product-popup-image"
+                    src={props.imgSrc}
+                    onError={(e) => {
+                      e.target.onError = null;
+                      e.target.src = "No_Image_Available.jpg";
+                    }}
+                  ></img>
                   {AddToBasketPopup()}
                 </Row>
               </Col>
