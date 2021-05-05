@@ -1,12 +1,14 @@
-import React from 'react';
-import Alert from 'react-bootstrap/Alert';
+import React from "react";
+import Alert from "react-bootstrap/Alert";
 import { BsCheckCircle } from "react-icons/bs";
 
-function ToastNotification() {
+function ToastNotification({ text, label }) {
   return (
     <div className="toast-notification">
-      <Alert variant="success">
-        <Alert.Heading><BsCheckCircle size={30} /> Prekė pridėta į krepšelį </Alert.Heading>
+      <Alert variant={label}>
+        <Alert.Heading>
+          <BsCheckCircle size={30} /> {text}
+        </Alert.Heading>
       </Alert>
     </div>
   );

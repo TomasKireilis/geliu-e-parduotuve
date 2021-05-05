@@ -263,9 +263,12 @@ table thead tr {
 }
 
 .toast-notification {
+  left: 50%;
+  transform: translate(-50%);
   z-index: 5000;
   position: fixed;
-  margin-top: -180px;
+  top: 0;
+  margin-top: 1vh;
 }
 
 .account-login-icon {
@@ -297,4 +300,3 @@ table thead tr {
 .blue {
   color: blue;
 }
-

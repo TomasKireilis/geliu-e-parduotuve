@@ -6,11 +6,25 @@ import Button from "react-bootstrap/Button";
 import { GlobalContext } from "Context/GlobalState.js";
 import AccountLoginPopup from "AcountPopups/AccountLoginPopup";
 function Header({ title }) {
-  const { loginInfo } = useContext(GlobalContext);
+  const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
   const [loginPopupActive, setLoginPopupActive] = useState(false);
   const loginButton = () => {
-    if (loginInfo.LoggedIn) {
-      return <Button className="login-button">Atsijungti</Button>;
+    if (loginInfo.loggedIn) {
+      return (
+        <Button
+          className="login-button"
+          onClick={() => {
+            if (loginInfo.persistent) {
+              loginInfo.loggedIn = false;
+              updateLoginInfo({ loginInfo });
+            } else {
+              updateLoginInfo({});
+            }
+          }}
+        >
+          Atsijungti
+        </Button>
+      );
     } else {
       return (
         <Button
@@ -39,8 +53,8 @@ function Header({ title }) {
         </Row>
         {loginPopupActive && (
           <AccountLoginPopup
-            popupAcive={loginPopupActive}
-            setpopupAcive={setLoginPopupActive}
+            popupActive={loginPopupActive}
+            setpopupActive={setLoginPopupActive}
           />
         )}
       </Container>

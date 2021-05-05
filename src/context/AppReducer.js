@@ -28,13 +28,21 @@ function AppReducer(state, action) {
     case "UPDATE_TOTAL":
       return {
         ...state,
-        totalSum: state.cartItems.reduce((sum, item) => sum + item.amount * item.price, 0),
+        totalSum: state.cartItems.reduce(
+          (sum, item) => sum + item.amount * item.price,
+          0
+        ),
       };
     case "UPDATE_CART":
-     return {
+      return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
-    };
+      };
+    case "UPDATE_LOGININFO":
+      return {
+        ...state,
+        loginInfo: action.payload,
+      };
     default:
       return state;
   }
