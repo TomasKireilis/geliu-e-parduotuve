@@ -273,7 +273,6 @@ table thead tr {
   word-break: break-word;
 }
 
-
 .order-button {
   position: relative;
   display: flex;
@@ -335,5 +334,4 @@ table thead tr {
 
 .blue {
   color: blue;
-  margin-top: -180px;
 }
