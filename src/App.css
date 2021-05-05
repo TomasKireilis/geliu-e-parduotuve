@@ -172,11 +172,22 @@ table thead tr {
   background-color: rgba(248, 248, 255, 0.9);
   margin: auto;
 }
-
+.modal-content {
+  background-color: transparent !important;
+  border: 2px transparent !important;
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
+    1 25% !important;
+  border-radius: 10px !important;
+}
 .shopping-cart-table thead {
   background-color: rgba(248, 248, 255, 0.5);
 }
-
+.account-login-popup {
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
+    1 25%;
+  border-radius: 10px;
+}
 .basket-note-textarea {
   position: relative;
   border: 2px solid rgba(0, 0, 0, 1);
@@ -276,6 +287,7 @@ table thead tr {
   width: 40px;
   height: 40px;
   margin-right: 3px;
+  margin-left: -10px;
   bottom: 0px;
   margin-top: auto;
   margin-bottom: auto;
@@ -295,6 +307,8 @@ table thead tr {
 /* On mouse-over */
 .create-account-btn:hover {
   background: #eee;
+  border: 2px transparent;
+  border-radius: 10px;
 }
 
 .blue {

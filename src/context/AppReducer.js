@@ -41,7 +41,7 @@ function AppReducer(state, action) {
     case "UPDATE_LOGININFO":
       return {
         ...state,
-        loginInfo: action.payload,
+        loginInfo: { ...action.payload },
       };
     default:
       return state;

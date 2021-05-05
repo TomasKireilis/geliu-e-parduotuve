@@ -16,7 +16,7 @@ function Header({ title }) {
           onClick={() => {
             if (loginInfo.persistent) {
               loginInfo.loggedIn = false;
-              updateLoginInfo({ loginInfo });
+              updateLoginInfo(loginInfo);
             } else {
               updateLoginInfo({});
             }
@@ -51,12 +51,10 @@ function Header({ title }) {
             Basket
           </Nav.Link>
         </Row>
-        {loginPopupActive && (
-          <AccountLoginPopup
-            popupActive={loginPopupActive}
-            setpopupActive={setLoginPopupActive}
-          />
-        )}
+        <AccountLoginPopup
+          popupActive={loginPopupActive}
+          setpopupActive={setLoginPopupActive}
+        />
       </Container>
     </header>
   );

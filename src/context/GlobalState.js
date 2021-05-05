@@ -5,7 +5,7 @@ const initialState = {
   cartItems: [],
   cartNote: "",
   totalSum: 0,
-  loginInfo: {},
+  loginInfo: { persistent: "true" },
 };
 
 export const GlobalContext = createContext(initialState);
@@ -97,7 +97,9 @@ export const GlobalProvider = ({ children }) => {
     if (loginInfo) {
       try {
         updateLoginInfo(JSON.parse(loginInfo));
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
   }, []);
 

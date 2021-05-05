@@ -9,7 +9,9 @@ import ToastNotification from "MainContent/ToastNotification.js";
 
 function AccountLoginPopup({ popupActive, setpopupActive }) {
   const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
-  const [loginData, setLoginData] = useState({});
+  const [loginData, setLoginData] = useState(
+    loginInfo ?? { persistent: "true" }
+  );
   const [toastActive, setToastActive] = useState(false);
 
   const loginToAccount = () => {
@@ -19,14 +21,14 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
     onShowAlert();
   };
   useEffect(() => {
-    setLoginData(loginInfo);
+    console.log(loginInfo);
+    if (loginInfo.email) setLoginData(loginInfo);
   }, [loginInfo]);
-
   const onShowAlert = () => {
     setToastActive(true);
+    setpopupActive(false);
     window.setTimeout(() => {
       setToastActive(false);
-      setpopupActive(false);
     }, 2000);
   };
 
@@ -39,75 +41,82 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
           isOpen={toastActive}
         />
       )}
-      <VerticallyCenteredModal
-        show={popupActive}
-        onHide={() => setpopupActive(false)}
-      >
-        <Container fluid style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}>
-          <Row style={{ fontSize: "2em", marginLeft: "0px" }}>
-            <img className="account-login-icon" src={"LoginIcon.png"}></img>
-            Prisijungti
-          </Row>
-          <Row>
-            <Form className="account-login-form">
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>El-paštas</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Įveskite el-paštą"
-                  value={loginData.email}
-                  onChange={(event) => {
-                    loginData.email = event.target.value;
-                    setLoginData(loginData);
-                  }}
-                />
-                <Form.Text className="text-muted">
-                  Mes niekada nebendrinsime jūsų el. Pašto
-                </Form.Text>
-              </Form.Group>
+      {popupActive && (
+        <VerticallyCenteredModal
+          show={popupActive}
+          onHide={() => setpopupActive(false)}
+        >
+          <Container
+            className="account-login-popup"
+            fluid
+            style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}
+          >
+            <Row style={{ fontSize: "2em", marginLeft: "0px" }}>
+              <img className="account-login-icon" src={"LoginIcon.png"}></img>
+              Prisijungti
+            </Row>
+            <Row>
+              <Form className="account-login-form">
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>El-paštas</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder={loginData.email ?? "Įveskite el-paštą"}
+                    onChange={(event) => {
+                      loginData.email = event.target.value;
 
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Slaptažodis</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Įveskite slaptažodį"
-                  value={loginData.password}
-                  onChange={(event) => {
-                    loginData.password = event.target.value;
-                    setLoginData(loginData);
-                  }}
-                />
-              </Form.Group>
+                      setLoginData(loginData);
+                    }}
+                  />
+                  <Form.Text className="text-muted">
+                    Mes niekada nebendrinsime jūsų el. Pašto
+                  </Form.Text>
+                </Form.Group>
 
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Check
-                  type="checkbox"
-                  label="Išsaugoti prisijungimo duomenis"
-                  value={loginData.persistent}
-                  onChange={(event) => {
-                    loginData.persistent = event.target.value;
-                    setLoginData(loginData);
-                  }}
-                />
-              </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Slaptažodis</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Įveskite slaptažodį"
+                    defaultValue={loginData.password}
+                    onChange={(event) => {
+                      loginData.password = event.target.value;
 
-              <Button
-                variant="primary"
-                onClick={() => {
-                  loginToAccount();
-                }}
-              >
-                Prisijungti
-              </Button>
-            </Form>
-          </Row>
-          <Row>
-            <button className="create-account-btn blue">
-              Sukurti naują paskyrą
-            </button>
-          </Row>
-        </Container>
-      </VerticallyCenteredModal>
+                      setLoginData(loginData);
+                    }}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Check
+                    type="checkbox"
+                    label="Išsaugoti prisijungimo duomenis"
+                    defaultChecked={loginData.persistent ?? "true"}
+                    onChange={(event) => {
+                      loginData.persistent = event.target.checked;
+                      setLoginData(loginData);
+                    }}
+                  />
+                </Form.Group>
+
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    loginToAccount();
+                  }}
+                >
+                  Prisijungti
+                </Button>
+              </Form>
+            </Row>
+            <Row>
+              <button className="create-account-btn blue">
+                Sukurti naują paskyrą
+              </button>
+            </Row>
+          </Container>
+        </VerticallyCenteredModal>
+      )}
     </>
   );
 }
