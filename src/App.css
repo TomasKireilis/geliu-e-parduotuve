@@ -266,4 +266,7 @@ table thead tr {
 .order-form {
   padding: 15px;
   background-color: rgba(248, 248, 255, 1);
+  min-width: min(100vw, 400px);
+  width: 50vw;
+  max-width: 900px;
 }

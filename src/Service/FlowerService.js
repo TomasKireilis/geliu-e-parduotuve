@@ -26,3 +26,13 @@ function mapFlowerData(data) {
 
   return temp;
 }
+export async function postOrder(formData) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+};
+  console.log(formData);
+  const response = await fetch("http://localhost:8080/order", requestOptions);
+  console.log(response);
+}
