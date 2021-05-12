@@ -5,7 +5,8 @@ import { GlobalContext } from "Context/GlobalState.js";
 
 const ShoppingCartRow = ({ item }) => {
   const [amount, setAmount] = useState(item.amount);
-  const { deleteItem, updateItemAmount, updateTotal } = useContext(GlobalContext);
+  const { deleteItem, updateItemAmount, updateTotal } =
+    useContext(GlobalContext);
 
   const onAmountChange = (e) => {
     let inputAmount = e.target.value;
@@ -16,9 +17,9 @@ const ShoppingCartRow = ({ item }) => {
   };
 
   const onDelete = (id) => {
-    deleteItem(id); 
+    deleteItem(id);
     updateTotal();
-  }
+  };
 
   useEffect(() => {
     updateItemAmount(item.id, amount);
@@ -27,8 +28,15 @@ const ShoppingCartRow = ({ item }) => {
 
   return (
     <tr>
-      <td>
-        <img className="cartPhoto" src={item.image} />
+      <td style={{ padding: ".1rem", width: "80px" }}>
+        <img
+          className="cart-photo"
+          src={item.image}
+          onError={(e) => {
+            e.target.onError = null;
+            e.target.src = "No_Image_Available.jpg";
+          }}
+        ></img>
       </td>
       <td>{item.title}</td>
       <td>{item.price}</td>
@@ -40,10 +48,11 @@ const ShoppingCartRow = ({ item }) => {
           min="1"
           value={amount}
           onChange={onAmountChange}
+          style={{ width: "calc(30px + 5vw)" }}
         />
       </td>
       <td>{(item.price * amount).toFixed(2)}</td>
-      <td>
+      <td style={{ width: "80px" }}>
         <Button
           type="button"
           variant="delete"
