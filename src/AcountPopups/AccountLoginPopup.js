@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { GlobalContext } from "Context/GlobalState.js";
 import ToastNotification from "MainContent/ToastNotification.js";
-import RegisterAccountPopup from "AcountPopups/CreateNewAccountPopup";
 import RegisterAccount from "./RegisterAccount.js";
 
 function AccountLoginPopup({ popupActive, setpopupActive }) {
@@ -112,10 +111,8 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
               </Form>
             </Row>
             <Row>
-                <RegisterAccount
-
-                />
-                </Row>
+              <RegisterAccount />
+            </Row>
           </Container>
         </VerticallyCenteredModal>
       )}
