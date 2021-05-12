@@ -65,10 +65,10 @@ function Header({ title }) {
         <Col style={{ maxWidth: "fit-content" }}>
           <Row className="header-buttons-container">
             <Nav.Link href="/" className="btn btn-primary">
-              Home
+              Produkcija
             </Nav.Link>
             <Nav.Link href="/Cart" className="btn btn-primary">
-              Basket
+              Pirkinių krepšelis
             </Nav.Link>
           </Row>
         </Col>

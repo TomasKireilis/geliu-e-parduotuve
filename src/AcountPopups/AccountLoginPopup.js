@@ -21,7 +21,6 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
     onShowAlert();
   };
   useEffect(() => {
-    console.log(loginInfo);
     if (loginInfo.email) setLoginData(loginInfo);
   }, [loginInfo]);
   const onShowAlert = () => {
@@ -69,7 +68,7 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
                     }}
                   />
                   <Form.Text className="text-muted">
-                    Mes niekada nebendrinsime jūsų el. Pašto
+                    Mes niekada nebendrinsime jūsų el. pašto
                   </Form.Text>
                 </Form.Group>
 
