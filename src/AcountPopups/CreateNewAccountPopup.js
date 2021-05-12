@@ -6,17 +6,21 @@ import {VerticallyCenteredModal} from "../Modals/VerticallyCenteredModal";
 import {GlobalContext} from "../Context/GlobalState";
 
 function RegisterAccountPopup(popupActive, setpopupActive) {
-    const { registrationInfo, updateRegistrationInfo } = useContext(GlobalContext);
     const [registrationData, setRegistrationData] = useState( { persistent: "true" });
 
-    const [registrationPopupActive, setRegistrationPopupActive] = useState(false);
     const registerAccount = () => {
         //TO DO IMPLEMENT CALL TO BACK
     }
     return (
 
-<VerticallyCenteredModal>
-<Container>
+<VerticallyCenteredModal
+    show={popupActive}
+    onHide={() => setpopupActive(false)}
+        style={{zIndex:100}}>
+<Container
+    className="account-login-popup"
+    fluid
+    style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}>
         <Row>
             <Form>
                 <Form.Group>
