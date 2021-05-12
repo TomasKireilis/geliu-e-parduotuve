@@ -110,7 +110,7 @@
   margin-right: auto;
 }
 
-.cartPhoto {
+.cart-photo {
   height: 4vh;
   max-height: 100px;
   min-height: 80px;
@@ -133,26 +133,54 @@ table thead tr {
 }
 .header-container {
   position: relative;
-  min-height: 120px;
-  height: 8vh;
-  background-color: rgba(255, 255, 255, 0.6);
-  flex-direction: column;
   display: flex;
+  height: 75px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.header-container .row {
+  align-items: flex-end;
+  justify-content: space-between;
 }
 .nav-title {
-  margin: auto;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
   width: fit-content;
-
-  font-size: 2.5em;
+  font-size: calc(1em + 1vw);
   font-family: "Domine-SB";
 }
 .header-buttons-container .btn {
   margin: 5px;
   margin-top: 0;
-  font-size: 1.5em;
+  font-size: min(1.5em, calc(0.5em + 1.5vw));
   flex-grow: 0.1;
   padding: 0.1rem;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
+
+.login-button {
+  position: relative;
+  display: flex;
+  font-size: min(1.1em, calc(0.5em + 1.5vw)) !important;
+  padding: 0.1rem !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+.login-name {
+  right: 0;
+  top: 100;
+  text-align: right;
+  z-index: 100;
+}
+.table td,
+.table th {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  width: fit-content;
+}
+
 .header-buttons-container {
   flex-direction: row;
   justify-content: center;
@@ -163,11 +191,25 @@ table thead tr {
   background-color: rgba(248, 248, 255, 0.9);
   margin: auto;
 }
-
+.shopping-cart-table * {
+  vertical-align: middle !important;
+}
+.modal-content {
+  background-color: transparent !important;
+  border: 2px transparent !important;
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
+    1 25% !important;
+  border-radius: 10px !important;
+}
 .shopping-cart-table thead {
   background-color: rgba(248, 248, 255, 0.5);
 }
-
+.account-login-popup {
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
+    1 25%;
+  border-radius: 10px;
+}
 .basket-note-textarea {
   position: relative;
   border: 2px solid rgba(0, 0, 0, 1);
@@ -253,7 +295,6 @@ table thead tr {
   word-break: break-word;
 }
 
-
 .order-button {
   position: relative;
   display: flex;
@@ -277,8 +318,42 @@ table thead tr {
   max-width: 900px;
 }
 .toast-notification {
+  left: 50%;
+  transform: translate(-50%);
   z-index: 5000;
   position: fixed;
-  margin-top: -180px;
+  top: 0;
+  margin-top: 1vh;
+}
 
+.account-login-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 3px;
+  margin-left: -10px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.account-login-form {
+  padding: 10px;
+}
+.create-account-btn {
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.create-account-btn:hover {
+  background: #eee;
+  border: 2px transparent;
+  border-radius: 10px;
+}
+
+.blue {
+  color: blue;
 }

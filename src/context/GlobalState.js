@@ -5,6 +5,7 @@ const initialState = {
   cartItems: [],
   cartNote: "",
   totalSum: 0,
+  loginInfo: { persistent: "true" },
 };
 
 export const GlobalContext = createContext(initialState);
@@ -46,18 +47,31 @@ export const GlobalProvider = ({ children }) => {
       });
     } catch (error) {}
   }
+  function updateLoginInfo(loginInfo) {
+    try {
+      dispatch({
+        type: "UPDATE_LOGININFO",
+        payload: loginInfo,
+      });
+    } catch (error) {}
+  }
 
   function updateCart(newItem) {
     try {
-      const index = state.cartItems.findIndex(existingItem => { return existingItem.id === newItem.id })
-      if(index >= 0) {
-        updateItemAmount(state.cartItems[index].id, (+state.cartItems[index].amount)+1)
+      const index = state.cartItems.findIndex((existingItem) => {
+        return existingItem.id === newItem.id;
+      });
+      if (index >= 0) {
+        updateItemAmount(
+          state.cartItems[index].id,
+          +state.cartItems[index].amount + 1
+        );
       } else {
         dispatch({
           type: "UPDATE_CART",
           payload: newItem,
         });
-      }  
+      }
     } catch (error) {}
   }
 
@@ -78,6 +92,15 @@ export const GlobalProvider = ({ children }) => {
         updateCartNote(note);
       } catch (error) {}
     }
+
+    const loginInfo = localStorage.getItem("login-info");
+    if (loginInfo) {
+      try {
+        updateLoginInfo(JSON.parse(loginInfo));
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -87,6 +110,10 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("my-shopping-cart-note", state.cartNote);
   }, [state.cartNote]);
+
+  useEffect(() => {
+    localStorage.setItem("login-info", JSON.stringify(state.loginInfo));
+  }, [state.loginInfo]);
 
   return (
     <GlobalContext.Provider
@@ -98,7 +125,9 @@ export const GlobalProvider = ({ children }) => {
         updateCartNote,
         totalSum: state.totalSum,
         updateTotal,
-        updateCart
+        updateCart,
+        loginInfo: state.loginInfo,
+        updateLoginInfo,
       }}
     >
       {children}

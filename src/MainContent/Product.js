@@ -48,7 +48,13 @@ function Product(props) {
   };
   return (
     <>
-     {toastActive && <ToastNotification isOpen={toastActive}/>}
+      {toastActive && (
+        <ToastNotification
+          text="Prekė pridėta į krepšelį"
+          label="success"
+          isOpen={toastActive}
+        />
+      )}
       <div className="product-container" onClick={() => setpopupAcive(true)}>
         <img
           className="product-image"

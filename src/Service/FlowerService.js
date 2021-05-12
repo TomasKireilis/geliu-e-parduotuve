@@ -29,15 +29,19 @@ function mapFlowerData(data) {
 
 export async function postOrder(formData) {
   const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
   };
-  console.log(formData);
   const response = await fetch("http://localhost:8080/order", requestOptions);
-  console.log(response);
 }
 
 export async function getImageUrl(imageId) {
-  return `http://localhost:8080/images/${imageId}`;
+  return `http://localhost:8080/photo/${imageId}`;
 }
+//TODO call endpoint to check if exist
+// export async function checkIfAccountExist() {
+//   const response = await fetch("http://localhost:8080/items");
+//   const data = await response.json();
+//   return mapFlowerData(data);
+// }
