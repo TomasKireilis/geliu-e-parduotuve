@@ -5,58 +5,89 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import { GlobalContext } from "Context/GlobalState.js";
 import AccountLoginPopup from "AcountPopups/AccountLoginPopup";
+import { Col } from "react-bootstrap";
 function Header({ title }) {
   const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
   const [loginPopupActive, setLoginPopupActive] = useState(false);
   const loginButton = () => {
     if (loginInfo.loggedIn) {
       return (
-        <Button
-          className="login-button"
-          onClick={() => {
-            if (loginInfo.persistent) {
-              loginInfo.loggedIn = false;
-              updateLoginInfo(loginInfo);
-            } else {
-              updateLoginInfo({});
-            }
-          }}
-        >
-          Atsijungti
-        </Button>
+        <>
+          <Row
+            style={{
+              justifyContent: "flex-end",
+            }}
+          >
+            <Button
+              className="login-button"
+              onClick={() => {
+                if (loginInfo.persistent) {
+                  loginInfo.loggedIn = false;
+                  updateLoginInfo(loginInfo);
+                } else {
+                  updateLoginInfo({});
+                }
+              }}
+            >
+              Atsijungti
+            </Button>
+          </Row>
+          <Row>
+            <div className="login-name">NamePlaceHolder{loginInfo.name}</div>
+          </Row>
+        </>
       );
     } else {
       return (
-        <Button
-          className="login-button"
-          onClick={() => {
-            setLoginPopupActive(true);
+        <Row
+          style={{
+            justifyContent: "flex-end",
           }}
         >
-          Prisijungti
-        </Button>
+          <Button
+            className="login-button"
+            onClick={() => {
+              setLoginPopupActive(true);
+            }}
+          >
+            Prisijungti
+          </Button>
+        </Row>
       );
     }
   };
   return (
-    <header>
-      <Container className="header-container" fluid>
-        {loginButton()}
-        <Row className="nav-title">{title}</Row>
-        <Row className="header-buttons-container">
-          <Nav.Link href="/" className="btn btn-primary">
-            Home
-          </Nav.Link>
-          <Nav.Link href="/Cart" className="btn btn-primary">
-            Basket
-          </Nav.Link>
-        </Row>
-        <AccountLoginPopup
-          popupActive={loginPopupActive}
-          setpopupActive={setLoginPopupActive}
-        />
-      </Container>
-    </header>
+    <Container className="header-container" fluid>
+      <Row style={{ width: "100vw", height: "100%" }}>
+        <Col style={{ maxWidth: "fit-content" }}>
+          <div className="nav-title"> {title} </div>
+        </Col>
+        <Col style={{ maxWidth: "fit-content" }}>
+          <Row className="header-buttons-container">
+            <Nav.Link href="/" className="btn btn-primary">
+              Home
+            </Nav.Link>
+            <Nav.Link href="/Cart" className="btn btn-primary">
+              Basket
+            </Nav.Link>
+          </Row>
+        </Col>
+        <Col
+          style={{
+            maxWidth: "fit-content",
+            alignSelf: "flex-start",
+            margin: "0.2vw",
+          }}
+        >
+          {loginButton()}
+        </Col>
+      </Row>
+
+      <AccountLoginPopup
+        popupActive={loginPopupActive}
+        setpopupActive={setLoginPopupActive}
+      />
+    </Container>
   );
 }
 

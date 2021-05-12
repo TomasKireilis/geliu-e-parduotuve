@@ -133,33 +133,46 @@ table thead tr {
 }
 .header-container {
   position: relative;
-  min-height: 120px;
-  height: 8vh;
-  background-color: rgba(255, 255, 255, 0.6);
-  flex-direction: column;
   display: flex;
+  height: 75px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.header-container .row {
+  align-items: flex-end;
+  justify-content: space-between;
 }
 .nav-title {
-  margin: auto !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
   width: fit-content;
-  font-size: 2.5em;
+  font-size: calc(1em + 1vw);
   font-family: "Domine-SB";
 }
 .header-buttons-container .btn {
   margin: 5px;
   margin-top: 0;
-  font-size: 1.5em;
+  font-size: min(1.5em, calc(0.5em + 1.5vw));
   flex-grow: 0.1;
   padding: 0.1rem;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
 .login-button {
-  position: absolute;
-  margin: 5px;
-  margin-top: 0;
-  padding: 0.1rem;
+  position: relative;
+  display: flex;
+  font-size: min(1.1em, calc(0.5em + 1.5vw)) !important;
+  padding: 0.1rem !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+.login-name {
   right: 0;
-  margin-top: 0.5vh;
+  top: 100;
+  text-align: right;
+  z-index: 100;
 }
 
 .header-buttons-container {
