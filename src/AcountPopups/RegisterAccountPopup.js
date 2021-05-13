@@ -5,47 +5,72 @@ import Container from "react-bootstrap/Container";
 import { VerticallyCenteredModal } from "../Modals/VerticallyCenteredModal";
 import Button from "react-bootstrap/Button";
 import {postUser} from "../Service/RegistrationService";
+import ToastNotification from "../MainContent/ToastNotification";
+
 
 function RegisterAccountPopup({ popupActive, setpopupActive }) {
   const [registrationData, setRegistrationData] = useState({
     persistent: "true",
   });
   const [regButtonActive, setRegButtonActive] = useState(true);
-  const [passLabelColour, setPassLabelColour] = useState({colour:"black"});
+  const passComp = React.useRef(null);
+  const [toastActive, setToastActive] = useState(false);
   const registerAccount = () => {
-    let data = JSON.stringify({
+    let data = {
       "username": registrationData.email,
       "password": registrationData.password,
       "fullName": registrationData.fullName,
       "address": registrationData.address,
-      "phoneNumber": registrationData.phoneNumber});
-    console.log(data);
+      "phoneNumber": registrationData.phoneNumber,
+    };
     postUser(data);
-    //TO DO IMPLEMENT CALL TO BACK
+    onShowAlert();
   };
-
-function check() {
-    let setActive = true;
+function check()
+{
+     let setActive = true;
      if (registrationData.email && registrationData.checkPassword &&
          registrationData.fullName && registrationData.phoneNumber &&
-         registrationData.password != null) {
+         registrationData.password != null)
+     {
          setActive = false;
      }
-     if (registrationData.password ==
-         registrationData.checkPassword) {
-       passLabelColour.colour = "green";
-       setPassLabelColour(passLabelColour);
-     }
-     else
+
+     if (registrationData.password == registrationData.checkPassword && registrationData.password?.length > 7)
      {
-     passLabelColour.colour = "red";
-     setPassLabelColour(passLabelColour);
-     setActive = true;
+         passComp.current.innerHTML = "Slaptažodis tinkamas!"
+         passComp.current.style.color = "green";
+     }
+
+     if(registrationData.password != registrationData.checkPassword ||
+        registrationData.password?.length != registrationData.checkPassword?.length)
+     {
+         passComp.current.innerHTML = "Slaptažodžiai nesutampa!"
+         passComp.current.style.color = "red";
+         setActive = true;
+     }
+
+     if(registrationData.password?.length < 7)
+     {
+         passComp.current.innerHTML = "Slaptažodis per trumpas!"
+         passComp.current.style.color = "red";
+         setActive = true;
      }
      setRegButtonActive(setActive);
-  }
-
+}
+  const onShowAlert = () =>
+  {
+    setToastActive(true);
+    setpopupActive(false);
   return (
+  <>
+      {toastActive && (
+          <ToastNotification
+              text={`Registracija sėkminga. Sveiki ${registrationData.fullName}`}
+              label="success"
+              isOpen={toastActive}
+          />
+      )}
     <VerticallyCenteredModal
       show={popupActive}
       onHide={() => setpopupActive(false)}
@@ -67,7 +92,6 @@ function check() {
                 onChange={(event) => {
                   registrationData.email = event.target.value;
                   setRegistrationData(registrationData);
-                  check();
                 }}/>
             </Form.Group>
             <Form.Group>
@@ -80,7 +104,8 @@ function check() {
                 }}/>
             </Form.Group>
             <Form.Group>
-              <Form.Label style={{colour:passLabelColour.colour}}>Patvirtinti slaptažodį
+              <Form.Label
+                  ref={passComp}>Patvirtinti slaptažodį
               </Form.Label>
               <Form.Control type="password" placeholder=""
                 onChange={(event) => {
@@ -127,8 +152,8 @@ function check() {
           </Button>
         </Form>
       </Container>
-
     </VerticallyCenteredModal>
+      </>
   );
 }
 export default RegisterAccountPopup;

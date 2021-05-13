@@ -32,7 +32,6 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
       setToastActive(false);
     }, 2000);
   };
-
   return (
     <>
       {toastActive && (

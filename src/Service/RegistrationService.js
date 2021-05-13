@@ -3,7 +3,6 @@ export async function postUser(data) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-        mode: "no-cors",
     };
-   // const response = await fetch("http://localhost:8080/order", requestOptions);
+    const response = await fetch("http://localhost:8080/register", requestOptions);
 }
