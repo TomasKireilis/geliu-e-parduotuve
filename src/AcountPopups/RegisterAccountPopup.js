@@ -66,6 +66,7 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
     setToastActive(true);
     window.setTimeout(() => {
       setToastActive(false);
+      setpopupActive(false);
     }, 2000);
   };
   return (
@@ -75,6 +76,7 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
           text={`Registracija sėkminga. Sveiki ${registrationData.fullName}`}
           label="success"
           isOpen={toastActive}
+          style={{zIndex: 200000}}
         />
       )}
       <VerticallyCenteredModal
