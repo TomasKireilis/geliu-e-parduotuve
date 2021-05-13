@@ -48,6 +48,13 @@
   font-size: 1em;
 }
 
+.product-popup-amount {
+  position: relative;
+  margin-top: 9em;
+  font-size: min(0.5em, 4vw);
+  padding-right: 1vw;
+}
+
 .main-content {
   position: relative;
   width: 100%;
