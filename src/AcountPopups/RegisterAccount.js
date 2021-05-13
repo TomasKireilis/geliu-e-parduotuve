@@ -14,12 +14,10 @@ function RegisterAccount() {
       >
         Sukurti naują paskyrą
       </button>
-      {registrationPopupActive && (
-        <RegisterAccountPopup
-          popupActive={registrationPopupActive}
-          setpopupActive={setRegistrationPopupActive}
-        />
-      )}
+      <RegisterAccountPopup
+        popupActive={registrationPopupActive}
+        setpopupActive={setRegistrationPopupActive}
+      />
     </>
   );
 }
