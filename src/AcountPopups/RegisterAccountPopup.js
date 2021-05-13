@@ -64,6 +64,7 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
 
   const onShowAlert = () => {
     setToastActive(true);
+    setpopupActive(false);
     window.setTimeout(() => {
       setToastActive(false);
     }, 2000);
@@ -77,110 +78,113 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
           isOpen={toastActive}
         />
       )}
-      <VerticallyCenteredModal
-        show={popupActive}
-        onHide={() => setpopupActive(false)}
-        style={{ zIndex: 100 }}
-      >
-        <Container
-          className="account-registration-popup"
-          fluid
-          style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}
+      {popupActive && (
+        <VerticallyCenteredModal
+          show={popupActive}
+          onHide={() => setpopupActive(false)}
+          style={{ zIndex: 100 }}
         >
-          <Row style={{ fontSize: "2em", marginLeft: "0px" }}>
-            <img className="account-login-icon" src={"LoginIcon.png"}></img>
-            Registracija
-          </Row>
-          <Row>
-            <Form className="account-registration-form">
-              <Form.Group>
-                <Form.Label id="email">Elektroninio pašto adresas</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="pavyzdys@pastas.lt"
-                  onChange={(event) => {
-                    registrationData.email = event.target.value;
-                    setRegistrationData(registrationData);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Slaptažodis</Form.Label>
-                <Form.Control
-                  id="password"
-                  type="password"
-                  placeholder=""
-                  onChange={(event) => {
-                    registrationData.password = event.target.value;
-                    setRegistrationData(registrationData);
-                    check();
-                  }}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label ref={passComp}>Patvirtinti slaptažodį</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder=""
-                  onChange={(event) => {
-                    registrationData.checkPassword = event.target.value;
-                    setRegistrationData(registrationData);
-                    check();
-                  }}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Vardas Pavardė</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Vardenis Pavardenis"
-                  onChange={(event) => {
-                    registrationData.fullName = event.target.value;
-                    setRegistrationData(registrationData);
-                    check();
-                  }}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Adresas</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Pvz: Uogų g. 16 Vilnius"
-                  onChange={(event) => {
-                    registrationData.address = event.target.value;
-                    setRegistrationData(registrationData);
-                    check();
-                  }}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Tel. numeris</Form.Label>
-                <Form.Control
-                  type="tel"
-                  placeholder="+3706*******"
-                  onChange={(event) => {
-                    registrationData.phoneNumber = event.target.value;
-                    setRegistrationData(registrationData);
-                    check();
-                  }}
-                />
-              </Form.Group>
+          <Container
+            className="account-registration-popup"
+            fluid
+            style={{ backgroundColor: "rgba(248, 248, 255, 1)" }}
+          >
+            <Row style={{ fontSize: "2em", marginLeft: "0px" }}>
+              <img className="account-login-icon" src={"LoginIcon.png"}></img>
+              Registracija
+            </Row>
+            <Row>
+              <Form className="account-registration-form">
+                <Form.Group>
+                  <Form.Label id="email">Elektroninio pašto adresas</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="pavyzdys@pastas.lt"
+                    onChange={(event) => {
+                      registrationData.email = event.target.value;
+                      setRegistrationData(registrationData);
+                      check();
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Slaptažodis</Form.Label>
+                  <Form.Control
+                    id="password"
+                    type="password"
+                    placeholder=""
+                    onChange={(event) => {
+                      registrationData.password = event.target.value;
+                      setRegistrationData(registrationData);
+                      check();
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label ref={passComp}>Patvirtinti slaptažodį</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder=""
+                    onChange={(event) => {
+                      registrationData.checkPassword = event.target.value;
+                      setRegistrationData(registrationData);
+                      check();
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Vardas Pavardė</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Vardenis Pavardenis"
+                    onChange={(event) => {
+                      registrationData.fullName = event.target.value;
+                      setRegistrationData(registrationData);
+                      check();
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Adresas</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Pvz: Uogų g. 16 Vilnius"
+                    onChange={(event) => {
+                      registrationData.address = event.target.value;
+                      setRegistrationData(registrationData);
+                      check();
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Tel. numeris</Form.Label>
+                  <Form.Control
+                    type="tel"
+                    placeholder="+3706*******"
+                    onChange={(event) => {
+                      registrationData.phoneNumber = event.target.value;
+                      setRegistrationData(registrationData);
+                      check();
+                    }}
+                  />
+                </Form.Group>
+              </Form>
+            </Row>
+            <Form className="account-registration-button-form">
+              <Button
+                id="registrationButton"
+                variant="primary"
+                disabled={regButtonActive}
+                onClick={() => {
+                  registerAccount();
+                }}
+              >
+                Registruotis
+              </Button>
             </Form>
-          </Row>
-          <Form className="account-registration-button-form">
-            <Button
-              id="registrationButton"
-              variant="primary"
-              disabled={regButtonActive}
-              onClick={() => {
-                registerAccount();
-              }}
-            >
-              Registruotis
-            </Button>
-          </Form>
-        </Container>
-      </VerticallyCenteredModal>
+          </Container>
+        </VerticallyCenteredModal>
+      )}
     </>
   );
 }
