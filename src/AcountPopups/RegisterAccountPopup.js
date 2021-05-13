@@ -58,6 +58,7 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
     const onShowAlert = () => {
         setToastActive(true);
         setpopupActive(false);
+    }
         return (
             <>
                 {toastActive && (
@@ -152,5 +153,4 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
             </>
         );
     }
-}
 export default RegisterAccountPopup;
