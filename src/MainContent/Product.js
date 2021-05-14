@@ -10,6 +10,7 @@ import { GlobalContext } from "Context/GlobalState.js";
 function Product(props) {
   const [popupAcive, setpopupAcive] = useState(false);
   const [toastActive, settoastActive] = useState(false);
+  const [tempIsAdmin, setTempIsAdmin] = useState(true);
   const { updateCart } = useContext(GlobalContext);
 
   const addToCart = () => {
@@ -84,6 +85,7 @@ function Product(props) {
                 <Row>
                   <div className="product-popup-price">{props.price} €</div>
                 </Row>
+                {tempIsAdmin && (<Row> <div className="product-popup-amount">Prekės likutis: {props.amount}</div> </Row>)}
               </Col>
               <Col xs="10" style={{ maxWidth: "400px" }}>
                 <Row>
