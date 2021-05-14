@@ -16,7 +16,7 @@ function App() {
   return (
     <GlobalProvider>
       <Router>
-        <div className="App">
+        <div>
           <Header title={headerTitle} />
 
           <Route

@@ -13,16 +13,82 @@
   width: 100vw;
   height: auto;
 }
-.bacround-image {
-  background-image: url("background.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.background-image {
+  background-image: url("lilies.jpg");
   background-size: cover;
   z-index: -100;
+  width: 200vw;
+  height: 200vh;
+  left: 0vw;
+  top: -100vh;
+  animation-name: backgroundImage;
+  animation-duration: 360s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
-.backround-color {
-  backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.1);
+
+@keyframes backgroundImage {
+  0% {
+    left: 0vw;
+    top: -100vh;
+  }
+  10% {
+    left: 0vw;
+    top: -100vh;
+  }
+  20% {
+    left: 0vw;
+    top: 0vh;
+  }
+  30% {
+    left: -100vw;
+    top: 0vh;
+    width: 200vw;
+    height: 200vh;
+  }
+  40% {
+    left: -100vw;
+    top: 0vh;
+    width: 200vw;
+    height: 200vh;
+  }
+  50% {
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 100vh;
+  }
+  60% {
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  70% {
+    left: -100vw;
+    top: -100vh;
+    width: 200vw;
+    height: 200vh;
+  }
+  80% {
+    left: -100vw;
+    top: -100vh;
+    width: 200vw;
+    height: 200vh;
+  }
+  90% {
+    left: 0vw;
+    top: -100vh;
+  }
+  100% {
+    left: 0vw;
+    top: -100vh;
+  }
+}
+.background-color {
+  backdrop-filter: blur(3.5px);
+  background-color: rgba(158, 73, 73, 0.1);
   z-index: -99;
 }
 .absolute-center {
@@ -266,6 +332,7 @@ table thead tr {
   width: 20vw;
   min-width: 150px;
 }
+
 .type-dropdown {
   padding-left: 5px;
   padding-right: 5px;
@@ -332,7 +399,6 @@ table thead tr {
   top: 0;
   margin-top: 1vh;
 }
-
 .account-login-icon {
   position: relative;
   width: 40px;
