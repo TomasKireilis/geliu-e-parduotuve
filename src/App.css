@@ -88,7 +88,7 @@
 }
 .background-color {
   backdrop-filter: blur(3.5px);
-  background-color: rgba(158, 73, 73, 0.1);
+  background-color: rgba(111, 129, 4, 0.3);
   z-index: -99;
 }
 .absolute-center {
