@@ -7,7 +7,6 @@ import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
 import { useState } from "react";
 import { GlobalProvider } from "Context/GlobalState";
 
-
 function App() {
   const [headerTitle, setHeaderTitle] = useState("Gėlių e-parduotuvė");
   const updateHeaderTitle = (title) => {
@@ -16,23 +15,28 @@ function App() {
   return (
     <GlobalProvider>
       <Router>
-        <div className="App">
-          <Header title={headerTitle} />
-
-          <Route
-            exact
-            path="/"
-            component={() => (
-              <FrontPage updateHeaderTitle={updateHeaderTitle} />
-            )}
-          />
-          <Route
-            exact
-            path="/cart"
-            component={() => (
-              <ShoppingCartPage updateHeaderTitle={updateHeaderTitle} />
-            )}
-          />
+        <Header title={headerTitle} />
+        <div className="page-container">
+          <div className="page-container-effect">
+            <div className="page-container-effect">
+              <div className="page-container-child-holder">
+                <Route
+                  exact
+                  path="/"
+                  component={() => (
+                    <FrontPage updateHeaderTitle={updateHeaderTitle} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/cart"
+                  component={() => (
+                    <ShoppingCartPage updateHeaderTitle={updateHeaderTitle} />
+                  )}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </Router>
     </GlobalProvider>
