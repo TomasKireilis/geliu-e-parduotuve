@@ -34,6 +34,7 @@ export async function postOrder(formData) {
     body: JSON.stringify(formData),
   };
   const response = await fetch("http://localhost:8080/order", requestOptions);
+  return response.status;
 }
 
 export async function getImageUrl(imageId) {
