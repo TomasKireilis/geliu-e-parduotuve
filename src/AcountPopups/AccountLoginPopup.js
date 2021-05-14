@@ -97,15 +97,17 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
                     }}
                   />
                 </Form.Group>
-
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    loginToAccount();
-                  }}
-                >
-                  Prisijungti
-                </Button>
+                <div className="acount-login-form-button-container">
+                  <Button
+                    className="acount-login-form-button"
+                    variant="primary"
+                    onClick={() => {
+                      loginToAccount();
+                    }}
+                  >
+                    Prisijungti
+                  </Button>
+                </div>
               </Form>
             </Row>
             <Row>

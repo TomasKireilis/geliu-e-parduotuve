@@ -13,8 +13,9 @@ function ShoppingCartPage({ updateHeaderTitle }) {
 
   return (
     <>
-      <div className="fixed-full-screen bacround-image"></div>
-      <div className="fixed-full-screen backround-color"></div>
+      <div className="fixed-full-screen background-image"></div>
+      <div className="fixed-full-screen background-color"></div>
+
       <div className="basket-content">
         <Container fluid>
           <Row>
