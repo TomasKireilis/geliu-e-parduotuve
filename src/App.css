@@ -135,6 +135,42 @@
   margin: auto;
   margin-top: 3px;
 }
+.page-container {
+  width: 98%;
+  margin: auto;
+  background-color: rgba(248, 248, 255, 0.2);
+  border: transparent;
+  border-radius: 0 0 10px 10px;
+  padding-bottom: 1.5vh;
+}
+.page-container-effect {
+  width: 98%;
+  margin: auto;
+  background-color: rgba(248, 248, 255, 0.3);
+  border: transparent;
+  border-radius: 0 0 10px 10px;
+  padding-bottom: 1.5vh;
+}
+.page-container-child-holder {
+  width: 100%;
+  margin: auto;
+
+  padding-bottom: 3vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+@media (max-width: 600px) {
+  .page-container {
+    width: 100%;
+    margin: auto;
+    padding: auto;
+  }
+  .page-container-effect {
+    width: 100%;
+    margin: auto;
+    padding: auto;
+  }
+}
 .product-popup-button {
   width: 100%;
   min-width: 100px;
@@ -208,7 +244,7 @@ table thead tr {
   position: relative;
   display: flex;
   height: 75px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(248, 248, 255, 0.9);
 }
 
 .header-container .row {
@@ -362,7 +398,7 @@ table thead tr {
 .basket-content {
   margin: auto;
   margin-top: 10px;
-  width: 90%;
+  width: 100%;
 }
 .product-info {
   font-size: min(0.5em, 4vw);
