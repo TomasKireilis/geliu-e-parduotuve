@@ -10,9 +10,11 @@ import ToastNotification from "../MainContent/ToastNotification";
 function RegisterAccountPopup({ popupActive, setpopupActive }) {
   const [registrationData, setRegistrationData] = useState({});
   const [regButtonActive, setRegButtonActive] = useState(true);
+  const [toast, setToast] = useState("");
+  const [labelState, setLabelState] = useState("");
   const passComp = React.useRef(null);
   const [toastActive, setToastActive] = useState(false);
-  const registerAccount = () => {
+  const registerAccount = async() => {
     let data = {
       username: registrationData.email,
       password: registrationData.password,
@@ -20,8 +22,9 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
       address: registrationData.address,
       phoneNumber: registrationData.phoneNumber,
     };
-    postUser(data);
-    onShowAlert();
+    let response = await postUser(data);
+    console.log(response);
+    onShowAlert(response);
   };
 
   function check() {
@@ -62,20 +65,38 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
     setRegButtonActive(setActive);
   }
 
-  const onShowAlert = () => {
-    setToastActive(true);
-    setpopupActive(false);
-    window.setTimeout(() => {
-      setToastActive(false);
+  const onShowAlert = (response) => {
+    console.log(response);
+    if (response == "201")
+    {
+      let label = "success";
+      setLabelState(label);
+      let text = "Registracija sėkminga!";
+      setToast(text);
       setpopupActive(false);
-    }, 2000);
+      setToastActive(true);
+      window.setTimeout(() => {
+        setToastActive(false);
+      }, 2000);
+    }
+    else
+    {
+      let label = "danger";
+      setLabelState(label);
+      let text = "Netinkami registracijos duomenys";
+      setToast(text);
+      setToastActive(true);
+      window.setTimeout(() => {
+        setToastActive(false);
+      }, 2000);
+    }
   };
   return (
     <>
       {toastActive && (
         <ToastNotification
-          text={`Registracija sėkminga. Sveiki ${registrationData.fullName}`}
-          label="success"
+          text={toast}
+          label={labelState}
           isOpen={toastActive}
           style={{zIndex: 200000}}
         />
@@ -105,7 +126,6 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
                     onChange={(event) => {
                       registrationData.email = event.target.value;
                       setRegistrationData(registrationData);
-                      check();
                     }}
                   />
                 </Form.Group>

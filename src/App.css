@@ -336,12 +336,11 @@ table thead tr {
 .toast-notification {
   left: 50%;
   transform: translate(-50%);
-  z-index: 200000;
+  z-index: 200000 !important;
   position: fixed;
   top: 0;
   margin-top: 1vh;
 }
-
 .account-login-icon {
   position: relative;
   width: 40px;
