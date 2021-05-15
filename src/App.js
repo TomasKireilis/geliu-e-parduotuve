@@ -20,6 +20,8 @@ function App() {
           <div className="page-container-effect">
             <div className="page-container-effect">
               <div className="page-container-child-holder">
+                <div className="fixed-full-screen background-image"></div>
+                <div className="fixed-full-screen background-color"></div>
                 <Route
                   exact
                   path="/"
