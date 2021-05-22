@@ -126,6 +126,7 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
                     onChange={(event) => {
                       registrationData.email = event.target.value;
                       setRegistrationData(registrationData);
+                      check();
                     }}
                   />
                 </Form.Group>
