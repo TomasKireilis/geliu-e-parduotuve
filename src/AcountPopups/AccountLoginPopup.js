@@ -6,12 +6,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { GlobalContext } from "Context/GlobalState.js";
 import ToastNotification from "MainContent/ToastNotification.js";
+import RegisterAccount from "./RegisterAccount.js";
 
 function AccountLoginPopup({ popupActive, setpopupActive }) {
   const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
   const [loginData, setLoginData] = useState(
     loginInfo ?? { persistent: "true" }
   );
+
   const [toastActive, setToastActive] = useState(false);
 
   const loginToAccount = () => {
@@ -30,7 +32,6 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
       setToastActive(false);
     }, 2000);
   };
-
   return (
     <>
       {toastActive && (
@@ -111,9 +112,7 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
               </Form>
             </Row>
             <Row>
-              <button className="create-account-btn blue">
-                Sukurti naują paskyrą
-              </button>
+              <RegisterAccount />
             </Row>
           </Container>
         </VerticallyCenteredModal>

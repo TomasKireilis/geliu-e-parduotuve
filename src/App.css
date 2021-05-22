@@ -320,6 +320,22 @@ table thead tr {
     1 25%;
   border-radius: 10px;
 }
+.account-registration-popup {
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
+  1 25%;
+  border-radius: 10px;
+}
+.account-registration-form {
+  width: 400px;
+  padding: 30px;
+}
+.account-registration-button-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:6vh;
+}
 .basket-note-textarea {
   position: relative;
   border: 2px solid rgba(0, 0, 0, 1);

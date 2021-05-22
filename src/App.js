@@ -6,6 +6,8 @@ import Header from "Header/Header";
 import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
 import { useState } from "react";
 import { GlobalProvider } from "Context/GlobalState";
+import RegisterAccount from "./AcountPopups/RegisterAccount";
+
 
 function App() {
   const [headerTitle, setHeaderTitle] = useState("Gėlių e-parduotuvė");
