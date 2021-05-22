@@ -4,6 +4,7 @@ import FrontPage from "./FrontPage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "Header/Header";
 import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
+import OrderHistoryPage from "./ShoppingCartPage/OrderHistoryPage";
 import { useState } from "react";
 import { GlobalProvider } from "Context/GlobalState";
 
@@ -34,6 +35,13 @@ function App() {
                   path="/cart"
                   component={() => (
                     <ShoppingCartPage updateHeaderTitle={updateHeaderTitle} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/OrderHistory"
+                  component={() => (
+                    <OrderHistoryPage updateHeaderTitle={updateHeaderTitle} />
                   )}
                 />
               </div>

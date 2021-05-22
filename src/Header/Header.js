@@ -70,6 +70,11 @@ function Header({ title }) {
             <Nav.Link href="/Cart" className="btn btn-primary">
               Pirkinių krepšelis
             </Nav.Link>
+            {loginInfo.loggedIn && (
+              <Nav.Link href="/OrderHistory" className="btn btn-primary">
+                Pirkimų istorija
+              </Nav.Link>
+            )}
           </Row>
         </Col>
         <Col
