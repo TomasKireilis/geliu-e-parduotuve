@@ -23,7 +23,6 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
       phoneNumber: registrationData.phoneNumber,
     };
     let response = await postUser(data);
-    console.log(response);
     onShowAlert(response);
   };
 
@@ -41,7 +40,8 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
 
     if (
       registrationData.password == registrationData.checkPassword &&
-      registrationData.password?.length > 7
+      registrationData.password?.length > 7 &&
+      registrationData.password != undefined
     ) {
       passComp.current.innerHTML = "Slaptažodis tinkamas!";
       passComp.current.style.color = "green";
@@ -66,7 +66,6 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
   }
 
   const onShowAlert = (response) => {
-    console.log(response);
     if (response == "201")
     {
       let label = "success";
@@ -79,6 +78,17 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
         setToastActive(false);
       }, 2000);
     }
+    else if (response == "499")
+    {
+      let label = "danger";
+      setLabelState(label);
+      let text = "Kažkas nepavyko. Bandykite dar kartą";
+      setToast(text);
+      setToastActive(true);
+      window.setTimeout(() => {
+        setToastActive(false);
+      }, 3000);
+    }
     else
     {
       let label = "danger";
@@ -88,7 +98,7 @@ function RegisterAccountPopup({ popupActive, setpopupActive }) {
       setToastActive(true);
       window.setTimeout(() => {
         setToastActive(false);
-      }, 2000);
+      }, 3000);
     }
   };
   return (
