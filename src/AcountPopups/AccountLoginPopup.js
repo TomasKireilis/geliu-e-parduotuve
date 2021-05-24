@@ -7,27 +7,56 @@ import Form from "react-bootstrap/Form";
 import { GlobalContext } from "Context/GlobalState.js";
 import ToastNotification from "MainContent/ToastNotification.js";
 import RegisterAccount from "./RegisterAccount.js";
+import { checkIfUserExist } from "Service/RegistrationService.js";
 
 function AccountLoginPopup({ popupActive, setpopupActive }) {
   const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
+  const [toast, setToast] = useState("");
+  const [labelState, setLabelState] = useState("");
   const [loginData, setLoginData] = useState(
     loginInfo ?? { persistent: "true" }
   );
 
   const [toastActive, setToastActive] = useState(false);
 
-  const loginToAccount = () => {
-    //TODO create check if account exist
-    loginData.loggedIn = true;
-    updateLoginInfo(loginData);
-    onShowAlert();
+  const loginToAccount = async () => {
+    let response = await checkIfUserExist({
+      username: loginInfo.email,
+      password: loginInfo.password,
+    });
+    if (response == "true") {
+      loginData.loggedIn = true;
+      updateLoginInfo(loginData);
+    }
+    console.log(response);
+
+    onShowAlert(response);
   };
   useEffect(() => {
     if (loginInfo.email) setLoginData(loginInfo);
   }, [loginInfo]);
-  const onShowAlert = () => {
+
+  const onShowAlert = (response) => {
+    if (response == "true") {
+      let label = "success";
+      setLabelState(label);
+      let text = "Prisijungta sėkmingai!";
+      setToast(text);
+    } else if (response == "499") {
+      let label = "danger";
+      setLabelState(label);
+      let text = "Kažkas nepavyko. Bandykite dar kartą";
+      setToast(text);
+    } else {
+      let label = "danger";
+      setLabelState(label);
+      let text = "Netinkami registracijos duomenys";
+      setToast(text);
+    }
     setToastActive(true);
-    setpopupActive(false);
+    if (response == "true") {
+      setpopupActive(false);
+    }
     window.setTimeout(() => {
       setToastActive(false);
     }, 2000);
@@ -36,8 +65,8 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
     <>
       {toastActive && (
         <ToastNotification
-          text={`Prisijungta sėkmingai. Sveiki ${loginData.email}`}
-          label="success"
+          text={toast}
+          label={labelState}
           isOpen={toastActive}
         />
       )}
