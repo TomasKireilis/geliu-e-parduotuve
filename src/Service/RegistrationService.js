@@ -21,10 +21,14 @@ export async function checkIfUserExist(data) {
     },
     body: JSON.stringify(data),
   };
-  let response;
+
   try {
-    response = await fetch("http://localhost:8080/user/exists", requestOptions);
-    if (response.text == "true") {
+    let response = await fetch(
+      "http://localhost:8080/user/exists",
+      requestOptions
+    );
+    let text = await response.json();
+    if (text == true) {
       return "true";
     } else {
       return "false";

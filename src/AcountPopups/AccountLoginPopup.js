@@ -21,8 +21,8 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
 
   const loginToAccount = async () => {
     let response = await checkIfUserExist({
-      username: loginInfo.email,
-      password: loginInfo.password,
+      username: loginData.email,
+      password: loginData.password,
     });
     if (response == "true") {
       loginData.loggedIn = true;
