@@ -323,18 +323,18 @@ table thead tr {
 .account-registration-popup {
   border: 2px solid rgba(0, 0, 0, 1);
   border-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05))
-  1 25%;
+    1 25%;
   border-radius: 10px;
 }
 .account-registration-form {
   width: 400px;
   padding: 30px;
 }
-.account-registration-button-form{
+.account-registration-button-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height:6vh;
+  height: 6vh;
 }
 .basket-note-textarea {
   position: relative;
@@ -414,7 +414,6 @@ table thead tr {
 
 .basket-content {
   margin: auto;
-  margin-top: 10px;
   width: 100%;
 }
 .product-info {
@@ -491,4 +490,70 @@ table thead tr {
   width: 100%;
   display: flex;
   align-content: center;
+}
+.page-not-available {
+  position: absolute;
+  width: 94%;
+  height: 100vh;
+  background-color: rgba(170, 170, 170, 0.6);
+  z-index: 10000;
+  margin-left: -2vw;
+}
+.under-development-img-outer {
+  position: relative;
+
+  right: 0;
+  left: 0;
+  margin: auto;
+  height: 50vh;
+  width: 50vh;
+  max-width: 250px;
+  max-height: 250px;
+  animation: shaky-rotate-grow 10s linear infinite;
+}
+.under-development--img--inner {
+  position: absolute;
+
+  right: 0;
+  left: 0;
+  height: 50vh;
+  width: 50vh;
+  max-width: 250px;
+  max-height: 250px;
+}
+@keyframes shaky-rotate-grow {
+  20% {
+    transform: rotate(20deg);
+  }
+  30% {
+    transform: rotate(-20deg);
+  }
+  60% {
+    transform: rotate(360deg) scale(1.5);
+  }
+  67% {
+    transform: rotate(270deg);
+  }
+  70% {
+    transform: rotate(300deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(20deg);
+  }
+  90% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.development-title {
+  margin: auto;
+  font-family: AWRegular;
+  margin-bottom: 50px;
+  margin-top: 100px;
+  font-size: min(1.5em, 3vw);
 }

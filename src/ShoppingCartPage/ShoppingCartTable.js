@@ -7,7 +7,12 @@ const ShoppingCartTable = () => {
   const { cartItems } = useContext(GlobalContext);
 
   return (
-    <Table bordered hover className="shopping-cart-table">
+    <Table
+      bordered
+      hover
+      className="shopping-cart-table "
+      style={{ marginTop: "10px" }}
+    >
       <thead>
         <tr>
           <th></th>
