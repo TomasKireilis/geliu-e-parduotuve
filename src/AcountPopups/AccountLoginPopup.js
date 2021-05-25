@@ -28,8 +28,6 @@ function AccountLoginPopup({ popupActive, setpopupActive }) {
       loginData.loggedIn = true;
       updateLoginInfo(loginData);
     }
-    console.log(response);
-
     onShowAlert(response);
   };
   useEffect(() => {
