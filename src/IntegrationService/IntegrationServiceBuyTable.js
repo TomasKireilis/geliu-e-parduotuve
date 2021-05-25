@@ -50,30 +50,32 @@ const IntegrationServiceBuyTable = ({ setBasketPrice }) => {
   };
 
   return (
-    <Table
-      bordered
-      hover
-      className="shopping-cart-table "
-      style={{ marginTop: "10px" }}
-    >
-      <thead>
-        <tr>
-          <th>Prekės pavadinimas</th>
-          <th>Kiekis sandėlyje</th>
-          <th>Pirkimo Kiekis</th>
-          <th>Tiekėjo kaina EUR</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <IntegrationServiceBuyTableRow
-            item={item}
-            key={item.id}
-            setItemPrice={(id, value) => updateSum(id, value)}
-          />
-        ))}
-      </tbody>
-    </Table>
+    <>
+      <Table
+        bordered
+        hover
+        className="shopping-cart-table "
+        style={{ marginTop: "10px" }}
+      >
+        <thead>
+          <tr>
+            <th>Prekės pavadinimas</th>
+            <th>Kiekis sandėlyje</th>
+            <th>Pirkimo Kiekis</th>
+            <th>Tiekėjo kaina EUR</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <IntegrationServiceBuyTableRow
+              item={item}
+              key={item.id}
+              setItemPrice={(id, value) => updateSum(id, value)}
+            />
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 };
 

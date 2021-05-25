@@ -482,11 +482,11 @@ table thead tr {
 }
 .page-not-available {
   position: absolute;
-  width: 94%;
+  width: 101%;
   height: 100vh;
   background-color: rgba(170, 170, 170, 0.6);
   z-index: 10000;
-  margin-left: -2vw;
+  margin-left: -5vw;
 }
 .under-development-img-outer {
   position: relative;
@@ -544,7 +544,7 @@ table thead tr {
   font-family: AWRegular;
   margin-bottom: 50px;
   margin-top: 100px;
-  font-size: min(1.5em, 3vw);
+  font-size: min(1.5em, 2.5vw);
 }
 @media (max-width: 600px) {
   .page-container {

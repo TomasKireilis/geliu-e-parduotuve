@@ -18,15 +18,12 @@ function IntegrationServicePage({ updateHeaderTitle }) {
         <Container fluid>
           <Row>
             <Col style={{ maxWidth: "100%" }}>
-              <Row
-                className="header-buttons-container"
-                style={{ marginTop: "5px" }}
-              >
+              <Row style={{ marginTop: "5px", marginBottom: "5px" }}>
                 <Button className="login-button">Prekių užsakymas</Button>
               </Row>
             </Col>
           </Row>
-          {/* <div className="page-not-available">
+          <div className="page-not-available">
             <Row>
               <div className="development-title">
                 This page is being developed. Come back soon to see new
@@ -44,7 +41,7 @@ function IntegrationServicePage({ updateHeaderTitle }) {
                 src="UnderDevelopmentOuterPart.png"
               />
             </Row>
-          </div> */}
+          </div>
 
           <Row>
             <IntegrationServiceBuyTable
