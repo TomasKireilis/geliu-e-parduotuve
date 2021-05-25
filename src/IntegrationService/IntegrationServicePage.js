@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ShoppingCartTable from "../ShoppingCartPage/ShoppingCartTable";
 import ShoppingCartNote from "../ShoppingCartPage/ShoppingCartNote";
 import ShoppingCartTotalField from "../ShoppingCartPage/ShoppingCartTotalField";
@@ -10,6 +10,7 @@ function IntegrationServicePage({ updateHeaderTitle }) {
   useEffect(() => {
     updateHeaderTitle("Integracinis servisas");
   }, []);
+  const [basketPrice, setBasketPrice] = useState(0);
 
   return (
     <>
@@ -44,8 +45,16 @@ function IntegrationServicePage({ updateHeaderTitle }) {
               />
             </Row>
           </div> */}
+
           <Row>
-            <IntegrationServiceBuyTable />
+            <IntegrationServiceBuyTable
+              setBasketPrice={(value) => setBasketPrice(value)}
+            />
+          </Row>
+          <Row>
+            <div className="basket-total-container">
+              Bendra suma: {basketPrice.toFixed(2)} EUR
+            </div>
           </Row>
           <Row>
             <Button className="order-button">Užsakyti</Button>

@@ -17,9 +17,9 @@ const ShoppingCartTable = () => {
         <tr>
           <th></th>
           <th>Prekės pavadinimas</th>
-          <th>Vieneto kaina</th>
+          <th>Vieneto kaina EUR</th>
           <th>Kiekis</th>
-          <th>Suma</th>
+          <th>Suma EUR</th>
           <th>Pašalinti</th>
         </tr>
       </thead>
