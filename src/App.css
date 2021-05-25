@@ -160,18 +160,7 @@
   padding-left: 2vw;
   padding-right: 2vw;
 }
-@media (max-width: 600px) {
-  .page-container {
-    width: 100%;
-    margin: auto;
-    padding: auto;
-  }
-  .page-container-effect {
-    width: 100%;
-    margin: auto;
-    padding: auto;
-  }
-}
+
 .product-popup-button {
   width: 100%;
   min-width: 100px;
@@ -556,4 +545,21 @@ table thead tr {
   margin-bottom: 50px;
   margin-top: 100px;
   font-size: min(1.5em, 3vw);
+}
+@media (max-width: 600px) {
+  .page-container {
+    width: 100%;
+    margin: auto;
+    padding: auto;
+  }
+  .page-container-effect {
+    width: 100%;
+    margin: auto;
+    padding: auto;
+  }
+}
+@media (max-width: 1200px) {
+  .header-container {
+    height: 125px;
+  }
 }
