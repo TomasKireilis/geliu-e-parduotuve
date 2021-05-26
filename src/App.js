@@ -7,6 +7,7 @@ import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
 import IntegrationServicePage from "IntegrationService/IntegrationServicePage";
 import { useState } from "react";
 import { GlobalProvider } from "Context/GlobalState";
+import OrderHistoryPage from "OrderHistoryPage/OrderHistoryPage";
 
 function App() {
   const [headerTitle, setHeaderTitle] = useState("Gėlių e-parduotuvė");
@@ -36,6 +37,13 @@ function App() {
                   path="/cart"
                   component={() => (
                     <ShoppingCartPage updateHeaderTitle={updateHeaderTitle} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/OrderHistory"
+                  component={() => (
+                    <OrderHistoryPage updateHeaderTitle={updateHeaderTitle} />
                   )}
                 />
 

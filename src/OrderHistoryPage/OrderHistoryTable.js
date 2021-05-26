@@ -1,11 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
-import ShoppingCartRow from "./ShoppingCartRow";
 import { GlobalContext } from "Context/GlobalState.js";
+import { getOrderHistory } from "Service/FlowerService";
+import OrderHistoryRow from "./OrderHistoryRow";
 
 const OrderHistoryTable = () => {
-  const { cartItems } = useContext(GlobalContext);
+  const [data, setData] = useState([]);
+  const { loginInfo } = useContext(GlobalContext);
 
+  useEffect(async () => {
+    let history = await getOrderHistory({
+      loggedIn: loginInfo.loggedIn,
+      email: loginInfo.email,
+      password: loginInfo.password,
+    });
+    setData(history);
+  }, []);
   return (
     <Table bordered hover className="shopping-cart-table">
       <thead>
@@ -18,8 +28,8 @@ const OrderHistoryTable = () => {
         </tr>
       </thead>
       <tbody>
-        {cartItems.map((item) => (
-          <ShoppingCartRow item={item} key={item.id} />
+        {data.map((item) => (
+          <OrderHistoryRow item={item} key={item.id} />
         ))}
       </tbody>
     </Table>
