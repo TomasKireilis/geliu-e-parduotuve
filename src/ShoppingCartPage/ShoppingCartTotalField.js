@@ -5,9 +5,9 @@ function ShoppingCartTotalField() {
   const { totalSum } = useContext(GlobalContext);
 
   return (
-    <div className="basket-total-container">
-      Bendra suma: {totalSum.toFixed(2)} EUR
-    </div>
+      <div className="basket-total-container">
+      Bendra suma: {totalSum.toFixed(2)}
+    </div> 
   );
 }
 

@@ -4,21 +4,15 @@ import FrontPage from "./FrontPage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "Header/Header";
 import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
-
 import OrderHistoryPage from "./ShoppingCartPage/OrderHistoryPage";
-
-import IntegrationServicePage from "IntegrationService/IntegrationServicePage";
-import { useState, useContext } from "react";
-
+import { useState } from "react";
 import { GlobalProvider } from "Context/GlobalState";
-import RegisterAccount from "./AcountPopups/RegisterAccount";
-import { GlobalContext } from "Context/GlobalState.js";
+
 function App() {
   const [headerTitle, setHeaderTitle] = useState("Gėlių e-parduotuvė");
   const updateHeaderTitle = (title) => {
     setHeaderTitle(title);
   };
-  const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
   return (
     <GlobalProvider>
       <Router>
@@ -50,7 +44,6 @@ function App() {
                     <OrderHistoryPage updateHeaderTitle={updateHeaderTitle} />
                   )}
                 />
-
               </div>
             </div>
           </div>
