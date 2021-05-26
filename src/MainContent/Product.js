@@ -64,7 +64,6 @@ function Product(props) {
             e.target.src = "No_Image_Available.jpg";
           }}
         ></img>
-
         <div className="product-title">{props.title}</div>
         <div>{props.price} €</div>
       </div>

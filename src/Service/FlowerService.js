@@ -21,7 +21,7 @@ export async function getAllFlowers(userData) {
 
   const response = await fetch("http://localhost:8080/items", requestOptions);
   const data = await response.json();
-  return mapFlowerData(data);
+  return await mapFlowerData(data);
 }
 
 export async function checkCurrentUserRole(userData) {
@@ -54,20 +54,20 @@ export async function checkCurrentUserRole(userData) {
   return data;
 }
 
-function mapFlowerData(data) {
+async function mapFlowerData(data) {
   let temp = [];
 
   for (let i = 0; i < data.length; i++) {
+    var imageUrl = await getImageUrl(data[i].id);
     let tempObject = {
       id: data[i].id,
-      imgSrc: getImageUrl(data[i].id),
+      imgSrc: imageUrl,
       name: data[i].name,
       info: data[i].description,
       price: data[i].price,
       amount: data[i].amount,
       type: data[i].itemType.toLowerCase(),
     };
-
     if (data[i].itemType === "FLOWERPACK") {
       tempObject.type = "flowerBouquet";
     }
@@ -91,9 +91,3 @@ export async function postOrder(formData) {
 export async function getImageUrl(imageId) {
   return `http://localhost:8080/photo/${imageId}`;
 }
-//TODO call endpoint to check if exist
-// export async function checkIfAccountExist() {
-//   const response = await fetch("http://localhost:8080/items");
-//   const data = await response.json();
-//   return mapFlowerData(data);
-// }
