@@ -10,7 +10,7 @@ import { postOrder } from "Service/FlowerService";
 import ToastNotification from "MainContent/ToastNotification.js";
 
 function ShoppingCartOrderButton(props) {
-  const { cartItems, cartNote } = useContext(GlobalContext);
+  const { cartItems, cartNote, loginInfo } = useContext(GlobalContext);
 
   const [orderResponse, setOrderResponse] = useState("");
 
@@ -27,7 +27,11 @@ function ShoppingCartOrderButton(props) {
   });
 
   const placeOrder = async (data) => {
-    let response = await postOrder(data);
+    let response = await postOrder(data, {
+      loggedIn: loginInfo.loggedIn,
+      email: loginInfo.email,
+      password: loginInfo.password,
+    });
     if (response == "201") {
       setToastNotificationText("Užsakymas priimtas");
     } else {
