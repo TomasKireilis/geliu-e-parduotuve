@@ -67,7 +67,6 @@ function mapFlowerData(data) {
       amount: data[i].amount,
       type: data[i].itemType.toLowerCase(),
     };
-
     if (data[i].itemType === "FLOWERPACK") {
       tempObject.type = "flowerBouquet";
     }
@@ -91,9 +90,3 @@ export async function postOrder(formData) {
 export async function getImageUrl(imageId) {
   return `http://localhost:8080/photo/${imageId}`;
 }
-//TODO call endpoint to check if exist
-// export async function checkIfAccountExist() {
-//   const response = await fetch("http://localhost:8080/items");
-//   const data = await response.json();
-//   return mapFlowerData(data);
-// }

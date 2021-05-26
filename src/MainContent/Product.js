@@ -58,11 +58,7 @@ function Product(props) {
       <div className="product-container" onClick={() => setpopupAcive(true)}>
         <img
           className="product-image"
-          src={props.imgSrc}
-          onError={(e) => {
-            e.target.onError = null;
-            e.target.src = "No_Image_Available.jpg";
-          }}
+          src={'http://localhost:8080/photo/5'}//{props.imgSrc}
         ></img>
 
         <div className="product-title">{props.title}</div>
