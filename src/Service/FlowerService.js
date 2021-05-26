@@ -51,7 +51,6 @@ export async function checkCurrentUserRole(userData) {
     requestOptions
   );
   const data = await response.text();
-  console.log(data);
   return data;
 }
 
