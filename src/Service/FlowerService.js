@@ -21,7 +21,7 @@ export async function getAllFlowers(userData) {
 
   const response = await fetch("http://localhost:8080/items", requestOptions);
   const data = await response.json();
-  return mapFlowerData(data);
+  return await mapFlowerData(data);
 }
 
 export async function checkCurrentUserRole(userData) {
@@ -54,13 +54,15 @@ export async function checkCurrentUserRole(userData) {
   return data;
 }
 
-function mapFlowerData(data) {
+async function mapFlowerData(data) {
   let temp = [];
 
   for (let i = 0; i < data.length; i++) {
+    var imageUrl = await getImageUrl(data[i].id);
+    console.log(imageUrl);
     let tempObject = {
       id: data[i].id,
-      imgSrc: getImageUrl(data[i].id),
+      imgSrc: imageUrl,
       name: data[i].name,
       info: data[i].description,
       price: data[i].price,
