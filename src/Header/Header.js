@@ -7,7 +7,6 @@ import { GlobalContext } from "Context/GlobalState.js";
 import AccountLoginPopup from "AcountPopups/AccountLoginPopup";
 import { Col } from "react-bootstrap";
 import { checkCurrentUserRole } from "Service/FlowerService";
-import { async } from "./../Service/RegistrationService";
 function Header({ title }) {
   const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
   const [loginPopupActive, setLoginPopupActive] = useState(false);

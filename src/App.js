@@ -48,7 +48,8 @@ function App() {
                   path="/OrderHistory"
                   component={() => (
                     <OrderHistoryPage updateHeaderTitle={updateHeaderTitle} />
-
+                  )}
+                />
 
                 <Route
                   exact
@@ -57,7 +58,6 @@ function App() {
                     <IntegrationServicePage
                       updateHeaderTitle={updateHeaderTitle}
                     />
-
                   )}
                 />
               </div>
