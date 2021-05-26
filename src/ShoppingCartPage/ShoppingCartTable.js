@@ -7,14 +7,19 @@ const ShoppingCartTable = () => {
   const { cartItems } = useContext(GlobalContext);
 
   return (
-    <Table bordered hover className="shopping-cart-table">
+    <Table
+      bordered
+      hover
+      className="shopping-cart-table "
+      style={{ marginTop: "10px" }}
+    >
       <thead>
         <tr>
           <th></th>
           <th>Prekės pavadinimas</th>
-          <th>Vieneto kaina</th>
+          <th>Vieneto kaina EUR</th>
           <th>Kiekis</th>
-          <th>Suma</th>
+          <th>Suma EUR</th>
           <th>Pašalinti</th>
         </tr>
       </thead>

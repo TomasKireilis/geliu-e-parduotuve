@@ -11,3 +11,12 @@ body {
 
   src: local("Domine-SB"), url(Fonts/Domine-SemiBold.ttf) format("truetype");
 }
+@font-face {
+  font-family: "AWRegular";
+  src: local("AWRegular"), url(Fonts/Audiowide-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "BNRegular";
+
+  src: local("BNRegular"), url(Fonts/BebasNeue-Regular.ttf) format("truetype");
+}
