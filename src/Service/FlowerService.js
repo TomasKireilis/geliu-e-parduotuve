@@ -78,12 +78,29 @@ async function mapFlowerData(data) {
   return temp;
 }
 
-export async function postOrder(formData) {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  };
+export async function postOrder(formData, userData) {
+  let requestOptions = {};
+  if (userData.loggedIn && userData.loggedIn == true) {
+    requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+
+        Authorization: `Basic ${Buffer.from(
+          `${userData.email}:${userData.password}`
+        ).toString("base64")}`,
+      },
+      body: JSON.stringify(formData),
+    };
+  } else {
+    requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    };
+  }
   const response = await fetch("http://localhost:8080/order", requestOptions);
   return response.status;
 }
