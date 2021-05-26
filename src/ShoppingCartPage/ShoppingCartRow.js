@@ -2,31 +2,16 @@ import React, { useState, useContext, useEffect } from "react";
 import { MdClear } from "react-icons/md";
 import Button from "react-bootstrap/Button";
 import { GlobalContext } from "Context/GlobalState.js";
-import ToastNotification from "../MainContent/ToastNotification";
 
 const ShoppingCartRow = ({ item }) => {
   const [amount, setAmount] = useState(item.amount);
   const { deleteItem, updateItemAmount, updateTotal } =
     useContext(GlobalContext);
 
-  const [toastActive, setToastActive] = useState(false);
-  const [toastNotificationText, setToastNotificationText] = useState(
-      "Sandėlyje nėra tiek pasirinktos rūšies prekių"
-  );
-
-  const onShowAlert = (response) => {
-      setToastActive(true);
-      window.setTimeout(() => {
-          setToastActive(false);
-      }, 2000);
-  };
-
   const onAmountChange = (e) => {
     let inputAmount = e.target.value;
     if (isNaN(inputAmount) || inputAmount <= 0) {
       inputAmount = "";
-    } else if (inputAmount > item.amount) {
-        onShowAlert();
     }
     setAmount(inputAmount);
   };
@@ -43,13 +28,6 @@ const ShoppingCartRow = ({ item }) => {
 
   return (
     <tr>
-        {toastActive && (
-            <ToastNotification
-                text={toastNotificationText}
-                label={"danger"}
-                isOpen={toastActive}
-            />
-        )}
       <td style={{ padding: ".1rem", width: "80px" }}>
         <img
           className="cart-photo"
