@@ -11,7 +11,8 @@ import ToastNotification from "MainContent/ToastNotification.js";
 import ShoppingCartRow from "./ShoppingCartRow";
 
 function ShoppingCartOrderButton(props) {
-  const { cartItems, cartNote, deleteItem, updateTotal, deleteNote } = useContext(GlobalContext);
+  const { cartItems, cartNote,loginInfo, deleteItem, updateTotal, deleteNote } = useContext(GlobalContext);
+
 
   const [orderResponse, setOrderResponse] = useState("");
 
@@ -28,7 +29,11 @@ function ShoppingCartOrderButton(props) {
   });
 
   const placeOrder = async (data) => {
-    let response = await postOrder(data);
+    let response = await postOrder(data, {
+      loggedIn: loginInfo.loggedIn,
+      email: loginInfo.email,
+      password: loginInfo.password,
+    });
     if (response == "201") {
       cartItems.map((item) => (
           deleteItem(item.id)

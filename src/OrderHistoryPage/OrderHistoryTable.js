@@ -32,10 +32,7 @@ const OrderHistoryTable = () => {
       </thead>
       <tbody>
         {data.map((item) => (
-          <OrderHistoryRow
-            item={item}
-            key={item.id + item.creationDate?.substring(0, 10)}
-          />
+          <OrderHistoryRow item={item} key={item.id + item.creationDate} />
         ))}
       </tbody>
     </Table>
