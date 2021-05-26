@@ -59,8 +59,11 @@ function Product(props) {
         <img
           className="product-image"
           src={'http://localhost:8080/photo/5'}//{props.imgSrc}
+          onError={(e) => {
+            e.target.onError = null;
+            e.target.src = "No_Image_Available.jpg";
+          }}
         ></img>
-
         <div className="product-title">{props.title}</div>
         <div>{props.price} €</div>
       </div>
