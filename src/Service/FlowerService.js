@@ -1,8 +1,59 @@
-export async function getAllFlowers() {
-  const response = await fetch("http://localhost:8080/items");
+export async function getAllFlowers(userData) {
+  let requestOptions = {};
+  if (userData.loggedIn && userData.loggedIn == true) {
+    requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${Buffer.from(
+          `${userData.email}:${userData.password}`
+        ).toString("base64")}`,
+      },
+    };
+  } else {
+    requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+  }
+
+  const response = await fetch("http://localhost:8080/items", requestOptions);
   const data = await response.json();
   return mapFlowerData(data);
 }
+
+export async function checkCurrentUserRole(userData) {
+  let requestOptions = {};
+  if (userData.loggedIn && userData.loggedIn == true) {
+    requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+
+        Authorization: `Basic ${Buffer.from(
+          `${userData.email}:${userData.password}`
+        ).toString("base64")}`,
+      },
+    };
+  } else {
+    requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+  }
+
+  const response = await fetch(
+    "http://localhost:8080/currentUserRole",
+    requestOptions
+  );
+  const data = await response.text();
+  return data;
+}
+
 function mapFlowerData(data) {
   let temp = [];
 

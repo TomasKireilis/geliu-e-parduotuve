@@ -4,7 +4,11 @@ import FrontPage from "./FrontPage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "Header/Header";
 import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
+
 import OrderHistoryPage from "./ShoppingCartPage/OrderHistoryPage";
+
+import IntegrationServicePage from "IntegrationService/IntegrationServicePage";
+
 import { useState } from "react";
 import { GlobalProvider } from "Context/GlobalState";
 
@@ -13,6 +17,7 @@ function App() {
   const updateHeaderTitle = (title) => {
     setHeaderTitle(title);
   };
+
   return (
     <GlobalProvider>
       <Router>
@@ -37,11 +42,22 @@ function App() {
                     <ShoppingCartPage updateHeaderTitle={updateHeaderTitle} />
                   )}
                 />
+
                 <Route
                   exact
                   path="/OrderHistory"
                   component={() => (
                     <OrderHistoryPage updateHeaderTitle={updateHeaderTitle} />
+
+
+                <Route
+                  exact
+                  path="/IntegrationService"
+                  component={() => (
+                    <IntegrationServicePage
+                      updateHeaderTitle={updateHeaderTitle}
+                    />
+
                   )}
                 />
               </div>
