@@ -33,7 +33,7 @@ function Header({ title }) {
             </Button>
           </Row>
           <Row>
-            <div className="login-name">NamePlaceHolder{loginInfo.name}</div>
+            <div className="login-name">{loginInfo.email}</div>
           </Row>
         </>
       );
@@ -56,6 +56,7 @@ function Header({ title }) {
       );
     }
   };
+
   return (
     <Container className="header-container" fluid>
       <Row style={{ width: "100vw", height: "100%" }}>
@@ -70,11 +71,17 @@ function Header({ title }) {
             <Nav.Link href="/Cart" className="btn btn-primary">
               Pirkinių krepšelis
             </Nav.Link>
+
             {loginInfo.loggedIn && (
               <Nav.Link href="/OrderHistory" className="btn btn-primary">
                 Pirkimų istorija
               </Nav.Link>
             )}
+
+            <Nav.Link href="/IntegrationService" className="btn btn-primary">
+              Integracinis servisas
+            </Nav.Link>
+
           </Row>
         </Col>
         <Col
