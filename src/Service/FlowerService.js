@@ -59,7 +59,6 @@ async function mapFlowerData(data) {
 
   for (let i = 0; i < data.length; i++) {
     var imageUrl = await getImageUrl(data[i].id);
-    console.log(imageUrl);
     let tempObject = {
       id: data[i].id,
       imgSrc: imageUrl,
