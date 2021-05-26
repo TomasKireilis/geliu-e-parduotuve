@@ -485,7 +485,7 @@ table thead tr {
   width: 101%;
   height: 100vh;
   background-color: rgba(170, 170, 170, 0.6);
-  z-index: 10000;
+  z-index: 100;
   margin-left: -5vw;
 }
 .under-development-img-outer {
