@@ -1,15 +1,25 @@
 import Product from "MainContent/Product";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import FlowerListFilters from "./FlowerListFilters";
 import { getAllFlowers } from "Service/FlowerService.js";
+import { GlobalContext } from "./../Context/GlobalState";
 
 function FlowerList() {
+  const { loginInfo } = useContext(GlobalContext);
   const [data, setData] = useState([]);
   useEffect(async () => {
-    const a = JSON.parse(JSON.stringify(await getAllFlowers()));
+    const a = JSON.parse(
+      JSON.stringify(
+        await getAllFlowers({
+          loggedIn: loginInfo.loggedIn,
+          email: loginInfo.email,
+          password: loginInfo.password,
+        })
+      )
+    );
     setData(a);
-  }, []);
+  }, [loginInfo]);
 
   const [filteredFlowerList, setFilteredFlowerList] = useState(data);
 

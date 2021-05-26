@@ -1,12 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Row, Container, Col, Button, Nav } from "react-bootstrap";
-
+import { checkCurrentUserRole } from "Service/FlowerService";
 import IntegrationServiceBuyTable from "./IntegrationServiceBuyTable";
+import { GlobalContext } from "Context/GlobalState.js";
 
 function IntegrationServicePage({ updateHeaderTitle }) {
+  const { loginInfo } = useContext(GlobalContext);
+  const [userType, setUserType] = useState("anomymous");
+
   useEffect(() => {
     updateHeaderTitle("Integracinis servisas");
   }, []);
+
+  useEffect(async () => {
+    setUserType(
+      await checkCurrentUserRole({
+        loggedIn: loginInfo.loggedIn,
+        email: loginInfo.email,
+        password: loginInfo.password,
+      })
+    );
+  }, [loginInfo]);
+
   const [basketPrice, setBasketPrice] = useState(0);
 
   return (

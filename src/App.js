@@ -5,16 +5,30 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "Header/Header";
 import ShoppingCartPage from "./ShoppingCartPage/ShoppingCartPage";
 import IntegrationServicePage from "IntegrationService/IntegrationServicePage";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GlobalProvider } from "Context/GlobalState";
-import RegisterAccount from "./AcountPopups/RegisterAccount";
+
+import { checkCurrentUserRole } from "Service/FlowerService";
 import { GlobalContext } from "Context/GlobalState.js";
+
 function App() {
   const [headerTitle, setHeaderTitle] = useState("Gėlių e-parduotuvė");
   const updateHeaderTitle = (title) => {
     setHeaderTitle(title);
   };
-  const { loginInfo, updateLoginInfo } = useContext(GlobalContext);
+  const { loginInfo } = useContext(GlobalContext);
+  const [userType, setUserType] = useState("anomymous");
+
+  useEffect(async () => {
+    setUserType(
+      await checkCurrentUserRole({
+        loggedIn: loginInfo.loggedIn,
+        email: loginInfo.email,
+        password: loginInfo.password,
+      })
+    );
+  }, [loginInfo]);
+
   return (
     <GlobalProvider>
       <Router>
@@ -39,10 +53,7 @@ function App() {
                     <ShoppingCartPage updateHeaderTitle={updateHeaderTitle} />
                   )}
                 />
-                {
-                  //loginInfo.loggedIn &&
-                }
-                {
+                {userType != "anomymous" && (
                   <Route
                     exact
                     path="/IntegrationService"
@@ -52,7 +63,7 @@ function App() {
                       />
                     )}
                   />
-                }
+                )}
               </div>
             </div>
           </div>
