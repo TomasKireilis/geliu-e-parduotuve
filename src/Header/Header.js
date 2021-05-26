@@ -33,7 +33,6 @@ function Header({ title }) {
             </Button>
           </Row>
           <Row>
-            <div className="login-name">NamePlaceHolder{loginInfo.name}</div>
             <div className="login-name">{loginInfo.email}</div>
           </Row>
         </>
