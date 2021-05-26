@@ -3,7 +3,6 @@ import ShoppingCartTable from "./ShoppingCartTable";
 import ShoppingCartNote from "./ShoppingCartNote";
 import ShoppingCartTotalField from "./ShoppingCartTotalField";
 import { Row, Container, Col } from "react-bootstrap";
-import {} from "react-bootstrap/Container";
 import ShoppingCartOrderButton from "./ShoppingCartOrderButton";
 
 function ShoppingCartPage({ updateHeaderTitle }) {

@@ -9,27 +9,33 @@ const OrderHistoryTable = () => {
   const { loginInfo } = useContext(GlobalContext);
 
   useEffect(async () => {
-    let history = await getOrderHistory({
-      loggedIn: loginInfo.loggedIn,
-      email: loginInfo.email,
-      password: loginInfo.password,
-    });
-    setData(history);
-  }, []);
+    if (loginInfo.loggedIn) {
+      let history = await getOrderHistory({
+        loggedIn: loginInfo.loggedIn,
+        email: loginInfo.email,
+        password: loginInfo.password,
+      });
+      setData(history);
+    } else {
+      setData([]);
+    }
+  }, [loginInfo]);
   return (
     <Table bordered hover className="shopping-cart-table">
       <thead>
         <tr>
-          <th></th>
           <th>Užsakymo ID</th>
-          <th>Bendra kaina</th>
-          <th>Prekės</th>
+          <th>Adresas</th>
+          <th>Užsakymo Data</th>
           <th>Statusas</th>
         </tr>
       </thead>
       <tbody>
         {data.map((item) => (
-          <OrderHistoryRow item={item} key={item.id} />
+          <OrderHistoryRow
+            item={item}
+            key={item.id + item.creationDate?.substring(0, 10)}
+          />
         ))}
       </tbody>
     </Table>

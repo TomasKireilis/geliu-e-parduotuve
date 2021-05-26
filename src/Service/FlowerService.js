@@ -104,9 +104,13 @@ export async function getOrderHistory(userData) {
       },
     };
   } else {
-    return;
+    return {};
   }
   const response = await fetch("http://localhost:8080/orders", requestOptions);
   const data = await response.json();
+  console.log(data);
+  if (data == null) {
+    return [];
+  }
   return data;
 }
