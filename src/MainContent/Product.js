@@ -68,6 +68,7 @@ function Product(props) {
         <div className="product-title">{props.title}</div>
         <div>{props.price} €</div>
       </div>
+
       {popupAcive && (
         <VerticallyCenteredModal
           show={popupAcive}

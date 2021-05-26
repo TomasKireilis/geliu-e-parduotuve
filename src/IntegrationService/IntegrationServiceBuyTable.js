@@ -1,19 +1,21 @@
 import React, { useContext, useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
-import { GlobalContext } from "Context/GlobalState.js";
 import { getAllFlowers } from "Service/FlowerService.js";
 import IntegrationServiceBuyTableRow from "./IntegrationServiceBuyTableRow";
+import { GlobalContext } from "./../Context/GlobalState";
 
 const IntegrationServiceBuyTable = ({ setBasketPrice }) => {
   const [data, setData] = useState([]);
-
+  const { loginInfo } = useContext(GlobalContext);
   useEffect(async () => {
-    const a = JSON.parse(JSON.stringify(await getAllFlowers()));
-
-    setData(a);
+    let flowers = await getAllFlowers({
+      loggedIn: loginInfo.loggedIn,
+      email: loginInfo.email,
+      password: loginInfo.password,
+    });
     let newItemPrice = [];
-    for (let i = 0; i < a.length; i++) {
-      const element = a[i];
+    for (let i = 0; i < flowers.length; i++) {
+      const element = flowers[i];
       newItemPrice = [
         ...newItemPrice,
         { id: element.id, price: +element.price * +3 },
@@ -26,7 +28,7 @@ const IntegrationServiceBuyTable = ({ setBasketPrice }) => {
       const element = newItemPrice[i];
       priceSum += element.price;
     }
-
+    setData(flowers);
     setBasketPrice(priceSum);
   }, []);
 
