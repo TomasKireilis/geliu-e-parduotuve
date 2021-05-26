@@ -55,11 +55,11 @@ function IntegrationServicePage({ updateHeaderTitle }) {
               </Row>
             </div>
 
-            {/* <Row>
+            <Row>
               <IntegrationServiceBuyTable
                 setBasketPrice={(value) => setBasketPrice(value)}
               />
-            </Row> */}
+            </Row>
             <Row>
               <div className="basket-total-container">
                 Bendra suma: {basketPrice.toFixed(2)} EUR
