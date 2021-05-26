@@ -91,3 +91,26 @@ export async function postOrder(formData) {
 export async function getImageUrl(imageId) {
   return `http://localhost:8080/photo/${imageId}`;
 }
+export async function getOrderHistory(userData) {
+  let requestOptions = {};
+  if (userData.loggedIn && userData.loggedIn == true) {
+    requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${Buffer.from(
+          `${userData.email}:${userData.password}`
+        ).toString("base64")}`,
+      },
+    };
+  } else {
+    return {};
+  }
+  const response = await fetch("http://localhost:8080/orders", requestOptions);
+  const data = await response.json();
+
+  if (data == null) {
+    return [];
+  }
+  return data;
+}
