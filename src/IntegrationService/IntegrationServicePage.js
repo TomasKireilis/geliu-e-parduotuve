@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ShoppingCartTable from "../ShoppingCartPage/ShoppingCartTable";
-import ShoppingCartNote from "../ShoppingCartPage/ShoppingCartNote";
-import ShoppingCartTotalField from "../ShoppingCartPage/ShoppingCartTotalField";
 import { Row, Container, Col, Button, Nav } from "react-bootstrap";
-import ShoppingCartOrderButton from "../ShoppingCartPage/ShoppingCartOrderButton";
+
 import IntegrationServiceBuyTable from "./IntegrationServiceBuyTable";
 
 function IntegrationServicePage({ updateHeaderTitle }) {
