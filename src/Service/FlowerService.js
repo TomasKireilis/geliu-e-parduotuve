@@ -108,7 +108,7 @@ export async function getOrderHistory(userData) {
   }
   const response = await fetch("http://localhost:8080/orders", requestOptions);
   const data = await response.json();
-  console.log(data);
+
   if (data == null) {
     return [];
   }
