@@ -43,6 +43,11 @@ function AppReducer(state, action) {
         ...state,
         loginInfo: { ...action.payload },
       };
+    case "DELETE_CART_NOTE":
+      return {
+        ...state,
+        cartNote: state.cartItems.cartNote = [],
+      };
     default:
       return state;
   }
