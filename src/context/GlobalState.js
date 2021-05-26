@@ -22,6 +22,14 @@ export const GlobalProvider = ({ children }) => {
     } catch (error) {}
   }
 
+  function deleteNote() {
+    try {
+      dispatch({
+        type: "DELETE_CART_NOTE",
+      });
+    } catch (error) {}
+  }
+
   function updateItemAmount(id, amount) {
     try {
       dispatch({
@@ -98,7 +106,6 @@ export const GlobalProvider = ({ children }) => {
       try {
         updateLoginInfo(JSON.parse(loginInfo));
       } catch (error) {
-        console.log(error);
       }
     }
   }, []);
@@ -122,6 +129,7 @@ export const GlobalProvider = ({ children }) => {
         deleteItem,
         updateItemAmount,
         cartNote: state.cartNote,
+        deleteNote,
         updateCartNote,
         totalSum: state.totalSum,
         updateTotal,

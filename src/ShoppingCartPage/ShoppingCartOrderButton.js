@@ -8,9 +8,11 @@ import Col from "react-bootstrap/Col";
 import { Form } from "react-bootstrap";
 import { postOrder } from "Service/FlowerService";
 import ToastNotification from "MainContent/ToastNotification.js";
+import ShoppingCartRow from "./ShoppingCartRow";
 
 function ShoppingCartOrderButton(props) {
-  const { cartItems, cartNote, loginInfo } = useContext(GlobalContext);
+  const { cartItems, cartNote,loginInfo, deleteItem, updateTotal, deleteNote } = useContext(GlobalContext);
+
 
   const [orderResponse, setOrderResponse] = useState("");
 
@@ -33,6 +35,11 @@ function ShoppingCartOrderButton(props) {
       password: loginInfo.password,
     });
     if (response == "201") {
+      cartItems.map((item) => (
+          deleteItem(item.id)
+      ))
+      updateTotal()
+      deleteNote()
       setToastNotificationText("Užsakymas priimtas");
     } else {
       setToastNotificationText("Kažkas nepavyko. Bandykite dar kartą");
